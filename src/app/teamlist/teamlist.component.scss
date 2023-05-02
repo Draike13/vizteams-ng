@@ -1,0 +1,21 @@
+.mat-card{
+  display:flex;
+  flex-direction:column;
+  max-width: 500px;
+  min-height: 500px;
+  margin-left: 10px;
+}
+
+.mat-card-title{
+    position:absolute;
+    left:10px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(161, 154, 154);
+    border-bottom-width: 1px;
+    padding-bottom: 3px;
+    min-width: 100%;
+    
+}
+.mat-card-header {
+color: rgb(161, 154, 154);
+}
