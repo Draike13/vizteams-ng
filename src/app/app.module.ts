@@ -7,13 +7,15 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TeamlistComponent } from './teamlist/teamlist.component';
 import { MatCardModule } from '@angular/material/card';
+import { InfoContainerComponent } from './info-container/info-container.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TeamlistComponent
+    TeamlistComponent,
+    InfoContainerComponent
   ],
   imports: [
     BrowserModule,
