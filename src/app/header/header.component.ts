@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   signUpIn() {
     this.dialog.open(SignUpInDialogComponent, {
       minHeight: '30vh',
-      minWidth: '22vw',
+      minWidth: '25vw',
     });
   }
   ngOnInit(): void {}
