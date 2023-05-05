@@ -48,7 +48,7 @@
       mat-icon-button
       matSuffix
       (click)="hideConfirm = !hideConfirm"
-      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+      >{{ hideConfirm ? "visibility_off" : "visibility" }}</mat-icon
     >
     <mat-hint>Confirm your password</mat-hint>
     <mat-error *ngIf="passConfirmControl.invalid">{{
