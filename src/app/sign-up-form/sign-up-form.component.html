@@ -40,14 +40,14 @@
     <input
       [formControl]="passConfirmControl"
       matInput
-      [type]="hide ? 'password' : 'text'"
+      [type]="hideConfirm ? 'password' : 'text'"
       required
     />
     <mat-icon
       class="hide-icon"
       mat-icon-button
       matSuffix
-      (click)="hide = !hide"
+      (click)="hideConfirm = !hideConfirm"
       >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
     >
     <mat-hint>Confirm your password</mat-hint>

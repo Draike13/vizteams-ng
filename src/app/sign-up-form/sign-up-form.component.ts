@@ -12,6 +12,7 @@ export class SignUpFormComponent implements OnInit {
   passControl: FormControl;
   passConfirmControl: FormControl;
   hide = true;
+  hideConfirm = true;
 
   constructor(private dialogService: DialogService) {
     this.emailControl = new FormControl('', [
