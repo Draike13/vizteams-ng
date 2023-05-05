@@ -1,28 +1,17 @@
+  
 .mat-card{
-  display:flex;
-  flex-direction:column;
-  max-width: 52%;
-  min-height: 78%;
+  min-height: 80%;
+  max-width: 160%;
   margin-left: 50px;
-    margin-top: 50px;
+  margin-top: 30px;
+  padding: 0;
 }
 
-.mat-card-title{
-    position:absolute;
-    left:0px;
-    right:0px;
+.mat-card-header {
+  color: rgb(161, 154, 154); 
     border-bottom-style: solid;
-    border-bottom-color: #f5f5f5;;
+    border-bottom-color: #f5f5f5;
     border-bottom-width: 2px;
     padding-bottom: 3px;
-    min-width: 100%;
-
-}
-.mat-card-header {
-color: rgb(161, 154, 154);
-}
-
-.title{
-    position: relative;
-    left:10px;
+    padding-top: 10px;
 }

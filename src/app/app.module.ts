@@ -7,6 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TeamlistComponent } from './teamlist/teamlist.component';
 import { MatCardModule } from '@angular/material/card';
+import { InfoContainerComponent } from './info-container/info-container.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SignUpInDialogComponent } from './Dialog/sign-up-in-dialog/sign-up-in-dialog.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
@@ -15,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,12 +27,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     TeamlistComponent,
     SignUpInDialogComponent,
     SignUpFormComponent,
+    InfoContainerComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
+    MatExpansionModule,
+    MatDividerModule,
+    CdkAccordionModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

@@ -1,0 +1,17 @@
+
+.mat-card{
+    display:flex;
+    min-height: 70%;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.mat-card-subtitle{
+    min-width: 100%;
+    font-size: large;
+}
+.mat-card-header {
+    color: rgb(161, 154, 154);
+}
