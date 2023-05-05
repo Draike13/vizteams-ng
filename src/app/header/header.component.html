@@ -1,7 +1,14 @@
 <p>
   <mat-toolbar>
-   <img src="assets/vizient-logo-registered.svg" class="vizlogo" >
-   <span class="vizteams">VizTeams</span>
-   <span class="useroremail">UserName</span>
+    <img src="assets/vizient-logo-registered.svg" class="vizlogo" />
+    <span class="vizteams">VizTeams</span>
+    <span *ngIf="currentUser; else loggedOut" class="useroremail">{{
+      currentUser
+    }}</span>
+    <ng-template #loggedOut
+      ><span class="useroremail" (click)="signUpIn()"
+        >Sign Up</span
+      ></ng-template
+    >
   </mat-toolbar>
- </p>
+</p>
