@@ -28,14 +28,14 @@ export class SignUpFormComponent implements OnInit {
 
   getErrorMessage() {
     if (this.passControl.hasError('required')) {
-      return 'You must enter a value';
+      return 'This field is required';
     }
     if (this.passConfirmControl.hasError('required')) {
-      return 'You must enter a value';
+      return 'This field is required';
     }
 
     if (this.emailControl.hasError('required')) {
-      return 'You must enter a value';
+      return 'This field is required';
     }
 
     return this.emailControl.hasError('email') ? 'Not a valid email' : '';
