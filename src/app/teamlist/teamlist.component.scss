@@ -1,27 +1,17 @@
   
 .mat-card{
-  display:flex;
   min-height: 78%;
+  max-width: 160%;
   margin-left: 50px;
   margin-top: 50px;
+  padding: 0;
 }
 
-.mat-card-title{
-  position:absolute;
-  left:0px;
-  right:0px;
-  border-bottom-style: solid;
-  border-bottom-color: #f5f5f5;;
-  border-bottom-width: 2px;
-  padding-bottom: 3px;
-  min-width: 100%;
-
-}
 .mat-card-header {
-  color: rgb(161, 154, 154);
-}
-
-.title{
-  position: relative;
-  left:10px;
+  color: rgb(161, 154, 154); 
+    border-bottom-style: solid;
+    border-bottom-color: #f5f5f5;
+    border-bottom-width: 2px;
+    padding-bottom: 3px;
+    padding-top: 10px;
 }

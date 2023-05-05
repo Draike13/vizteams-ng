@@ -8,7 +8,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TeamlistComponent } from './teamlist/teamlist.component';
 import { MatCardModule } from '@angular/material/card';
 import { InfoContainerComponent } from './info-container/info-container.component';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,9 @@ import { InfoContainerComponent } from './info-container/info-container.componen
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
+    MatExpansionModule,
+    MatDividerModule,
+    CdkAccordionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
