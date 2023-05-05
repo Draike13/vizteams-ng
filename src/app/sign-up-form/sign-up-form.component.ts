@@ -10,6 +10,7 @@ import { DialogService } from '../services/dialog.service';
 export class SignUpFormComponent implements OnInit {
   emailControl: FormControl;
   passControl: FormControl;
+  passConfirmControl: FormControl;
   hide = true;
 
   constructor(private dialogService: DialogService) {
@@ -18,6 +19,7 @@ export class SignUpFormComponent implements OnInit {
       Validators.email,
     ]);
     this.passControl = new FormControl();
+    this.passConfirmControl = new FormControl();
   }
 
   ngOnInit(): void {
@@ -26,6 +28,9 @@ export class SignUpFormComponent implements OnInit {
 
   getErrorMessage() {
     if (this.passControl.hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.passConfirmControl.hasError('required')) {
       return 'You must enter a value';
     }
 

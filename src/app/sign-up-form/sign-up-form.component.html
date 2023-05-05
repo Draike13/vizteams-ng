@@ -34,6 +34,29 @@
   </mat-form-field>
 </p>
 
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Password Cofirmation</mat-label>
+    <input
+      [formControl]="passConfirmControl"
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      required
+    />
+    <mat-icon
+      class="hide-icon"
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+    >
+    <mat-hint>Confirm your password</mat-hint>
+    <mat-error *ngIf="passConfirmControl.invalid">{{
+      getErrorMessage()
+    }}</mat-error>
+  </mat-form-field>
+</p>
+
 <div class="form-buttons">
   <button
     style="margin-right: 5px"
@@ -43,7 +66,8 @@
     [disabled]="
       this.emailControl.hasError('email') ||
       this.emailControl.hasError('required') ||
-      this.passControl.hasError('required')
+      this.passControl.hasError('required') ||
+      this.passConfirmControl.hasError('required')
     "
   >
     Sign Up
