@@ -10,20 +10,20 @@
           <mat-expansion-panel-header>
             This is the expansion 1 title
           </mat-expansion-panel-header>
-      
+
           This the expansion 1 content
-      
+
         </mat-expansion-panel>
-      
+
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             This is the expansion 2 title
           </mat-expansion-panel-header>
-      
+
           This the expansion 2 content
-      
+
         </mat-expansion-panel>
-      
+
       </mat-accordion>
 
 
@@ -33,23 +33,28 @@
     <mat-card-header>
       <mat-card-title class="team-title">Teams</mat-card-title>
     </mat-card-header>
-  
+
     <mat-card-content class="team-content">
       <mat-accordion class="team-accordion">
         <mat-expansion-panel class="team-expansion-panel">
           <mat-expansion-panel-header>
             <mat-panel-title style="color: rgb(161, 154, 154); ">P2P</mat-panel-title>
           </mat-expansion-panel-header>
-          <p>Some text in the first expansion panel.</p>
+
+          <div class="imgPath">
+            <div *ngFor="let teamMember of teamMembers">
+               <img src={{teamMember.coverImagePath}} class="avatar"  matTooltip={{teamMember.name}} [matTooltipClass]="'teammembertooltip'" [matTooltipPosition]="'above'" />
+            </div>
+          </div>
         </mat-expansion-panel>
-  
+
         <mat-expansion-panel class="team-expansion-panel">
           <mat-expansion-panel-header>
             <mat-panel-title style="color: rgb(161, 154, 154); ">Catalog</mat-panel-title>
           </mat-expansion-panel-header>
           <p>Some text in the second expansion panel.</p>
         </mat-expansion-panel>
-  
+
         <mat-expansion-panel class="team-expansion-panel">
           <mat-expansion-panel-header>
             <mat-panel-title style="color: rgb(161, 154, 154); ">Cornerstone</mat-panel-title>
@@ -103,4 +108,3 @@
       </mat-accordion>
     </mat-card-content>
   </mat-card>
-  

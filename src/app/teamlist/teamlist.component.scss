@@ -1,4 +1,4 @@
-  
+
 .mat-card{
   min-height: 80%;
   max-width: 160%;
@@ -8,10 +8,28 @@
 }
 
 .mat-card-header {
-  color: rgb(161, 154, 154); 
+  color: rgb(161, 154, 154);
     border-bottom-style: solid;
     border-bottom-color: #f5f5f5;
     border-bottom-width: 2px;
     padding-bottom: 3px;
     padding-top: 10px;
+}
+
+.avatar{
+  height: 6vh;
+  padding: 0px
+
+}
+
+.imgPath{
+  display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+::ng-deep .teammembertooltip{
+margin: -5;
+position: absolute;
+top: -50px;
+left: -40px;
 }

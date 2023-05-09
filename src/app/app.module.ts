@@ -19,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
