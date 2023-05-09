@@ -15,12 +15,16 @@
         <div class="imgPath">
           <div *ngFor="let teamMember of teamMembers">
             <img
+              *ngIf="teamMember.coverImagePath; else useAvatar"
               src="{{ teamMember.coverImagePath }}"
               class="avatar"
               matTooltip="{{ teamMember.name }}"
               [matTooltipClass]="'teammembertooltip'"
               [matTooltipPosition]="'above'"
             />
+            <ng-template #useAvatar
+              ><img class="avatar" src="assets/avatar.png" />
+            </ng-template>
           </div>
         </div>
       </mat-expansion-panel>

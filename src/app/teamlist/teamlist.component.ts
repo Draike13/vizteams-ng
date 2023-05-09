@@ -13,7 +13,7 @@ export class TeamlistComponent implements OnInit {
     {
       name: 'Member1',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '1',
     },
     {
@@ -25,7 +25,7 @@ export class TeamlistComponent implements OnInit {
     {
       name: 'Member3',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '3',
     },
     {
@@ -38,13 +38,13 @@ export class TeamlistComponent implements OnInit {
     {
       name: 'Member5',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '5',
     },
     {
       name: 'Member6',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '6',
     },
     {
@@ -57,31 +57,31 @@ export class TeamlistComponent implements OnInit {
     {
       name: 'Member8',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '8',
     },
     {
       name: 'Member9',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '9',
     },
     {
       name: 'Member10',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '10',
     },
     {
       name: 'Member11',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '11',
     },
     {
       name: 'Member12',
       title: 'MemberTitle',
-      coverImagePath: 'assets/avatar.png',
+      coverImagePath: '',
       id: '12',
     },
   ];
