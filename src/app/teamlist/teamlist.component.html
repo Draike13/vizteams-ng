@@ -23,7 +23,13 @@
               [matTooltipPosition]="'above'"
             />
             <ng-template #useAvatar
-              ><img class="avatar" src="assets/avatar.png" />
+              ><img
+                class="avatar"
+                src="assets/avatar.png"
+                matTooltip="{{ teamMember.name }}"
+                [matTooltipClass]="'teammembertooltip'"
+                [matTooltipPosition]="'above'"
+              />
             </ng-template>
           </div>
         </div>
