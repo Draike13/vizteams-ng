@@ -9,6 +9,17 @@ import { TeamMember } from '../models/teamMember.model';
   styleUrls: ['./teamlist.component.scss'],
 })
 export class TeamlistComponent implements OnInit {
+  teamsList: string[] = [
+    'P2P',
+    'Catalog',
+    'Cornerstone',
+    'Data Crispr',
+    'CLO',
+    'SSO',
+    'VizGan',
+    'Tam',
+  ];
+
   teamMembers: TeamMember[] = [
     {
       name: 'Member1',
