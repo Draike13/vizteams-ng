@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { DialogService } from '../services/dialog.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -14,7 +14,7 @@ export class SignUpFormComponent implements OnInit {
   hide = true;
   hideConfirm = true;
 
-  constructor(private dialogService: DialogService) {
+  constructor(private userService: UserService) {
     this.emailControl = new FormControl('', [
       Validators.required,
       Validators.email,
@@ -40,5 +40,14 @@ export class SignUpFormComponent implements OnInit {
     }
 
     return this.emailControl.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  createUser() {
+    let newUser: any = {
+      email: this.emailControl.value,
+      password: this.passControl.value,
+      password_confirmation: this.passConfirmControl.value,
+    };
+    this.userService.createUser(newUser).subscribe((res) => {});
   }
 }
