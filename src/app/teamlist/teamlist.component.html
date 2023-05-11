@@ -36,9 +36,23 @@
         </div>
 
         <mat-action-row class="icon-holder">
-          <mat-icon class="person-icon">person_add</mat-icon>
+          <mat-icon
+            (click)="addMember()"
+            class="person-icon"
+            matTooltip="Add Member"
+            [matTooltipPosition]="'above'"
+            >person_add</mat-icon
+          >
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion></mat-card-content
-  ></mat-card
->
+  >
+  <mat-action-row class="action-row">
+    <mat-icon
+      matTooltip="Add Team"
+      [matTooltipPosition]="'above'"
+      class="add-team"
+      >add_box</mat-icon
+    >
+  </mat-action-row>
+</mat-card>

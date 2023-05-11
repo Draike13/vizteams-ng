@@ -19,8 +19,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {TooltipPosition} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TooltipPosition } from '@angular/material/tooltip';
+import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {TooltipPosition} from '@angular/material/tooltip';
     SignUpInDialogComponent,
     SignUpFormComponent,
     InfoContainerComponent,
+    AddMemberDialogComponent,
   ],
   imports: [
     BrowserModule,
