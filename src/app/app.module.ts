@@ -19,11 +19,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {TooltipPosition} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TooltipPosition } from '@angular/material/tooltip';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog
     MatButtonModule,
     ReactiveFormsModule,
     MatTooltipModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
