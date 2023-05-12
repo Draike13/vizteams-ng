@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
+
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
@@ -36,8 +37,21 @@ export class SignInFormComponent implements OnInit {
 
     return this.emailControl.hasError('email') ? 'Not a valid email' : '';
   }
-login(){};
+  login() {
+    const email = 'example@example.com';
+    const password = 'password123';
 
+    this.userService.login(email, password).subscribe(
+      (response: any) => {
+        console.log('Login successful:', response);
+        // Do something with the response, such as storing the JWT token
+      },
+      (error: any) => {
+        console.error('Login error:', error);
+        // Handle the error, such as displaying an error message to the user
+      }
+    );
+  }
 }
 
 
