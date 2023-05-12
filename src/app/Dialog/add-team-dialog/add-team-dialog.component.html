@@ -1,0 +1,16 @@
+<p>
+    <mat-form-field>
+    <mat-label>team name:</mat-label>
+    <input matInput [formControl]="nameControl" required placeholder="Team Name"/>
+</mat-form-field>
+</p>
+<p>
+<mat-form-field>
+    <mat-label>Team Description:</mat-label>
+    <textarea matInput [formControl]="descControl" required placeholder="Please describe the team" ></textarea>
+</mat-form-field>
+</p>
+<div class="modal-buttons">
+    <button mat-button  class="submitbutton" type="submit">Submit</button>
+    <button mat-button  class="cancelbutton" [mat-dialog-close]="true" >Cancel</button> 
+</div>

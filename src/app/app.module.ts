@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
+import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-
     SignUpFormComponent,
     InfoContainerComponent,
     AddMemberDialogComponent,
+    AddTeamDialogComponent,
   ],
   imports: [
     BrowserModule,
