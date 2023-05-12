@@ -1,0 +1,57 @@
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      [formControl]="emailControl"
+      placeholder="Email@Vizient.com"
+      required
+    />
+    <mat-icon matSuffix>email</mat-icon>
+    <mat-hint>Enter a valid email</mat-hint>
+    <mat-error *ngIf="emailControl.invalid">{{ getErrorMessage() }}</mat-error>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      [formControl]="passControl"
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      required
+    />
+    <mat-icon
+      class="hide-icon"
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+    >
+    <mat-hint>Create a password</mat-hint>
+    <mat-error *ngIf="passControl.invalid">{{ getErrorMessage() }}</mat-error>
+  </mat-form-field>
+</p>
+
+
+<div class="form-buttons">
+  <button
+    [mat-dialog-close]="true"
+    (click)="login()"
+    style="margin-right: 5px"
+    color="primary"
+    mat-raised-button
+    type="submit"
+    [disabled]="
+      this.emailControl.hasError('email') ||
+      this.emailControl.hasError('required') ||
+      this.passControl.hasError('required')
+    "
+  >
+    Sign In
+  </button>
+  <button [mat-dialog-close]="true" color="warn" mat-raised-button>
+    Cancel
+  </button>
+</div>
