@@ -5,12 +5,11 @@
 
   <mat-card-content class="team-content">
     <mat-accordion class="team-accordion" multi>
-      <mat-expansion-panel
-        *ngFor="let teams of teamsList"
-        class="team-expansion-panel"
-      >
+      <mat-expansion-panel class="team-expansion-panel">
         <mat-expansion-panel-header>
-          <mat-panel-title class="panel-title">{{ teams }}</mat-panel-title>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >P2P</mat-panel-title
+          >
         </mat-expansion-panel-header>
 
         <div class="imgPath">
@@ -34,25 +33,79 @@
             </ng-template>
           </div>
         </div>
-
-        <mat-action-row class="icon-holder">
-          <mat-icon
-            (click)="addMember()"
-            class="person-icon"
-            matTooltip="Add Member"
-            [matTooltipPosition]="'above'"
-            >person_add</mat-icon
-          >
-        </mat-action-row>
       </mat-expansion-panel>
-    </mat-accordion></mat-card-content
-  >
-  <mat-action-row class="action-row">
-    <mat-icon
-      matTooltip="Add Team"
-      [matTooltipPosition]="'above'"
-      class="add-team"
-      >add_box</mat-icon
-    >
-  </mat-action-row>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >Catalog</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the second expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >Cornerstone</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the third expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >Data Crispr</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the fourth expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >CLO</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the fifth expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >SSO</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the sixth expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >VizGan</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the seventh expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >Tam</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the eighth expansion panel.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="team-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: rgb(161, 154, 154)"
+            >Empty Team</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>Some text in the ninth expansion panel.</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
 </mat-card>
