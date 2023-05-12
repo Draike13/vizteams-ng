@@ -42,9 +42,9 @@ export class UserService {
   updateUseroremail() {
     const button = document.querySelector('button');
 
-  //   if (this.isLoggedIn()) {
-  //     // Change text of button
-  //     this.Useroremail.textContent = {{email}};
-  //   }
+    if (this.isLoggedIn()) {
+      // Change text of button
+      this.Useroremail.textContent = {{email}};
+    }
   }
 }
