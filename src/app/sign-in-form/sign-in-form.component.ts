@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
-
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
-  styleUrls: ['./sign-in-form.component.scss']
+  styleUrls: ['./sign-in-form.component.scss'],
 })
 export class SignInFormComponent implements OnInit {
-
   emailControl: FormControl;
   passControl: FormControl;
   hide = true;
@@ -53,6 +51,3 @@ export class SignInFormComponent implements OnInit {
     );
   }
 }
-
-
-
