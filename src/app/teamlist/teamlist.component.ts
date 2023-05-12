@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { TeamMember } from '../models/teamMember.model';
+import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-teamlist',
@@ -9,6 +11,17 @@ import { TeamMember } from '../models/teamMember.model';
   styleUrls: ['./teamlist.component.scss'],
 })
 export class TeamlistComponent implements OnInit {
+  teamsList: string[] = [
+    'P2P',
+    'Catalog',
+    'Cornerstone',
+    'Data Crispr',
+    'CLO',
+    'SSO',
+    'VizGan',
+    'Tam',
+  ];
+
   teamMembers: TeamMember[] = [
     {
       name: 'Member1',
@@ -86,7 +99,11 @@ export class TeamlistComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
+
+  addMember() {
+    this.dialog.open(AddMemberDialogComponent);
+  }
 
   ngOnInit(): void {}
 }

@@ -3,16 +3,15 @@ import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-sign-up-form',
-  templateUrl: './sign-up-form.component.html',
-  styleUrls: ['./sign-up-form.component.scss'],
+  selector: 'app-sign-in-form',
+  templateUrl: './sign-in-form.component.html',
+  styleUrls: ['./sign-in-form.component.scss']
 })
-export class SignUpFormComponent implements OnInit {
+export class SignInFormComponent implements OnInit {
+
   emailControl: FormControl;
   passControl: FormControl;
-  passConfirmControl: FormControl;
   hide = true;
-  hideConfirm = true;
 
   constructor(private userService: UserService) {
     this.emailControl = new FormControl('', [
@@ -20,7 +19,6 @@ export class SignUpFormComponent implements OnInit {
       Validators.email,
     ]);
     this.passControl = new FormControl();
-    this.passConfirmControl = new FormControl();
   }
 
   ngOnInit(): void {
@@ -31,9 +29,6 @@ export class SignUpFormComponent implements OnInit {
     if (this.passControl.hasError('required')) {
       return 'This field is required';
     }
-    if (this.passConfirmControl.hasError('required')) {
-      return 'This field is required';
-    }
 
     if (this.emailControl.hasError('required')) {
       return 'This field is required';
@@ -41,14 +36,9 @@ export class SignUpFormComponent implements OnInit {
 
     return this.emailControl.hasError('email') ? 'Not a valid email' : '';
   }
+login(){};
 
-  createUser() {
-    let newUser: any = {
-      email: this.emailControl.value,
-      password: this.passControl.value,
-      password_confirmation: this.passConfirmControl.value,
-    };
-    this.userService.createUser(newUser).subscribe((res) => {});
-  }
 }
+
+
 
