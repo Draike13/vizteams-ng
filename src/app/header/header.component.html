@@ -7,7 +7,7 @@
       *ngIf="currentUser; else loggedOut"
       (click)="showProfile()"
     >
-      {{ currentUser.email }}
+      {{ currentUser }}
     </span>
     <ng-template #loggedOut>
       <span class="useroremail" (click)="signUpIn()">Sign In</span>

@@ -24,6 +24,7 @@ import { TooltipPosition } from '@angular/material/tooltip';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     InfoContainerComponent,
     SignInFormComponent,
     AddMemberDialogComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

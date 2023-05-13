@@ -34,11 +34,11 @@
   </mat-form-field>
 </p>
 
-<a href="" routerLink="/signUpIn">Sign Up</a>
+<a href="" (click)="signUp()">Sign Up</a>
 <div class="form-buttons">
   <button
     [mat-dialog-close]="true"
-    (click)="login()"
+    (click)="onSubmit()"
     style="margin-right: 5px"
     color="primary"
     mat-raised-button
