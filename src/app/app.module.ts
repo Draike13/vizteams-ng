@@ -26,8 +26,6 @@ import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
