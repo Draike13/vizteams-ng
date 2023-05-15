@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignUpInDialogComponent } from '../Dialog/sign-up-in-dialog/sign-up-in-dialog.component';
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
+import { SignUpComponent } from '../Dialog/sign-up-in-dialog/sign-up.component';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +13,11 @@ import { SignUpInDialogComponent } from '../Dialog/sign-up-in-dialog/sign-up-in-
 export class HeaderComponent implements OnInit {
   currentUser: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    public dialog: MatDialog
+  ) {}
 
   signUpIn() {
     this.dialog.open(SignUpInDialogComponent, {
@@ -18,7 +25,13 @@ export class HeaderComponent implements OnInit {
       minWidth: '25vw',
     });
   }
-  ngOnInit(): void {}
 
-  showProfile (){}
+  ngOnInit(): void {
+    this.authService.autoSignIn();
+    this.userService.currentUserSubject.subscribe((user) => {
+      this.currentUser = user;
+    });
+  }
+
+  showProfile() {}
 }

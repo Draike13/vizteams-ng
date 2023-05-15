@@ -43,12 +43,11 @@ export class SignUpFormComponent implements OnInit {
   }
 
   createUser() {
-    let newUser: any = {
-      email: this.emailControl.value,
-      password: this.passControl.value,
-      password_confirmation: this.passConfirmControl.value,
-    };
-    this.userService.createUser(newUser).subscribe((res) => {});
+    //   let newUser: any = {
+    //     email: this.emailControl.value,
+    //     password: this.passControl.value,
+    //     password_confirmation: this.passConfirmControl.value,
+    //   };
+    //   this.userService.createUser(newUser).subscribe((res) => {});
   }
 }
-

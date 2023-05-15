@@ -1,48 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  currentUserSubject = new BehaviorSubject<any>(null);
 
-  userUrl = 'http://localhost:3000/users';
+  constructor() {}
 
-  createUser(newUser: any) {
-    return this.http.post(this.userUrl, newUser);
+  setCurrentUser(user) {
+    this.currentUserSubject.next(user);
   }
 
-  login(email: string, password: string): Observable<any> {
-    const loginData = {
-      email: email,
-      password: password,
-    };
-
-    return this.http.post<any>('/api/login', loginData);
-  }
-
-  logout() {
-    // Remove token from local storage
-    localStorage.removeItem('jwtToken');
-
-    // Update UI
-    this.updateUseroremail();
-  }
-
-  isLoggedIn() {
-    // Check if token is present in local storage
-    return !!localStorage.getItem('jwtToken');
-  }
-
-  updateUseroremail() {
-    const button = document.querySelector('button');
-
-    // if (this.isLoggedIn()) {
-    //   // Change text of button
-    //   this.Useroremail.textContent = {{email}};
-    // }
+  public get currentUser() {
+    return this.currentUserSubject.value;
   }
 }
-
