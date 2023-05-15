@@ -25,8 +25,6 @@ import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
