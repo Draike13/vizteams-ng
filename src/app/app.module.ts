@@ -25,6 +25,7 @@ import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
+import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
     SignInFormComponent,
     AddMemberDialogComponent,
     SignUpComponent,
+    AddTeamDialogComponent,
   ],
   imports: [
     BrowserModule,
