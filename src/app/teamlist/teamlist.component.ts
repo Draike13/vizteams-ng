@@ -3,6 +3,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
+import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -103,6 +104,12 @@ export class TeamlistComponent implements OnInit {
 
   addMember() {
     this.dialog.open(AddMemberDialogComponent);
+  }
+  addTeam() {
+    this.dialog.open(AddTeamDialogComponent, {
+      minHeight: '30vh',
+      minWidth: '40vw',
+    });
   }
 
   ngOnInit(): void {}
