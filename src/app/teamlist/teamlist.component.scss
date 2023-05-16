@@ -1,7 +1,14 @@
+.team-title {
+  font-size: xx-large;
+  padding: 4px;
+}
+
 .panel-wrapper {
   border-bottom: 2px solid black;
 }
 .panel-title {
+  font-size: larger;
+  padding: 4px;
   color: rgb(161, 154, 154);
 }
 .add-team {
@@ -72,7 +79,7 @@
   position: relative; /* Add position relative to create stacking context */
 }
 .team-container {
-  min-height: 100%;
+  min-height: 85%; /*keeps scroll bar from being always active and action row sticky */
   padding-bottom: 10px;
   box-sizing: border-box;
 }
