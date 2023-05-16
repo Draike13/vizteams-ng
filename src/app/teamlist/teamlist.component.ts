@@ -4,6 +4,7 @@ import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-teamlist',
@@ -88,17 +89,21 @@ export class TeamlistComponent implements OnInit {
     },
   ];
 
-  teamsList: Team[] = [
-    { name: 'P2P', id: 0, members: this.teamMembers },
-    { name: 'Catalog', id: 1, members: this.teamMembers },
-    { name: 'Cornerstone', id: 2, members: this.teamMembers },
-    { name: 'Data Crispr', id: 3, members: this.teamMembers },
-    { name: 'CLO', id: 4, members: this.teamMembers },
-    { name: 'SSO', id: 5, members: this.teamMembers },
-    { name: 'VizGan', id: 6, members: this.teamMembers },
-    { name: 'Tam', id: 7 },
-  ];
-  constructor(public dialog: MatDialog) {}
+  teamsList: Team[] = [];
+  //  = [
+  //   { name: 'P2P', id: 0, members: this.teamMembers },
+  //   { name: 'Catalog', id: 1, members: this.teamMembers },
+  //   { name: 'Cornerstone', id: 2, members: this.teamMembers },
+  //   { name: 'Data Crispr', id: 3, members: this.teamMembers },
+  //   { name: 'CLO', id: 4, members: this.teamMembers },
+  //   { name: 'SSO', id: 5, members: this.teamMembers },
+  //   { name: 'VizGan', id: 6, members: this.teamMembers },
+  //   { name: 'Tam', id: 7 },
+  // ];
+  constructor(
+    private databaseService: DatabaseService,
+    public dialog: MatDialog
+  ) {}
 
   addMember(teamsList: Team[], selectedTeam: Team) {
     this.dialog.open(AddMemberDialogComponent, {
@@ -115,6 +120,9 @@ export class TeamlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.teamsList);
+    this.databaseService.teamList$.subscribe((value) => {
+      this.teamsList = value;
+    });
+    this.databaseService.updateTeams();
   }
 }
