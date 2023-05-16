@@ -17,7 +17,7 @@
   display: flex;
   justify-content: flex-end;
   background-color: white; /* Add a background color to ensure visibility */
-  z-index: 1; 
+  z-index: 1;
 }
 
 .icon-holder {
@@ -77,4 +77,7 @@
   box-sizing: border-box;
 }
 
-
+.counter {
+  margin-right: 16px;
+  padding-top: 8px;
+}

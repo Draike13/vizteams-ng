@@ -1,8 +1,6 @@
-export class TeamMember {
-  constructor(
-    public name: string,
-    public title: string,
-    public coverImagePath?: string,
-    public id?: string
-  ) {}
+export interface TeamMember {
+  name: string;
+  title: string;
+  coverImagePath?: string;
+  id?: string;
 }

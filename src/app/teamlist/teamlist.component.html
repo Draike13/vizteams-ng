@@ -39,6 +39,7 @@
           </div>
 
           <mat-action-row class="icon-holder">
+            <div class="counter">{{ team.members?.length ?? 0 }}/12</div>
             <mat-icon
               (click)="addMember(this.teamsList, team)"
               class="person-icon"

@@ -96,7 +96,7 @@ export class TeamlistComponent implements OnInit {
     { name: 'CLO', id: 4, members: this.teamMembers },
     { name: 'SSO', id: 5, members: this.teamMembers },
     { name: 'VizGan', id: 6, members: this.teamMembers },
-    { name: 'Tam', id: 7, members: this.teamMembers },
+    { name: 'Tam', id: 7 },
   ];
   constructor(public dialog: MatDialog) {}
 
@@ -114,5 +114,7 @@ export class TeamlistComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.teamsList);
+  }
 }
