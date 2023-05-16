@@ -1,16 +1,34 @@
-<mat-form-field appearance="fill">
-  <mat-label>Input</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>{{ data.selectedTeam }}</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let teams of data.teamsList" value="">
-      {{ teams }}</mat-option
-    >
-  </mat-select>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Textarea</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>
+<div class="input-holder">
+  <mat-form-field class="first-name">
+    <mat-label>First Name</mat-label>
+    <input matInput />
+  </mat-form-field>
+
+  <mat-form-field class="last-name">
+    <mat-label>Last Name</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
+<div class="select-holder">
+  <mat-form-field class="title">
+    <mat-label>Title</mat-label>
+    <mat-select>
+      <mat-option value="kingOfVizient">King of Vizient</mat-option>
+      <mat-option value="developer">Developer</mat-option>
+      <mat-option value="litteralTrash">Litteral Trash</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="team">
+    <mat-label>Team</mat-label>
+    <mat-select [value]="this.data.selectedTeam.id">
+      <mat-option *ngFor="let team of data.teamsList" [value]="team.id">
+        {{ team.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="button-holder">
+  <button class="cancel-button" mat-button>Cancel</button>
+  <button class="submit-button" mat-button>Submit</button>
+</div>

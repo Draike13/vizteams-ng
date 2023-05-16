@@ -3,6 +3,7 @@ import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Team } from '../models/team.model';
 
 @Component({
   selector: 'app-teamlist',
@@ -10,17 +11,6 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./teamlist.component.scss'],
 })
 export class TeamlistComponent implements OnInit {
-  teamsList: string[] = [
-    'P2P',
-    'Catalog',
-    'Cornerstone',
-    'Data Crispr',
-    'CLO',
-    'SSO',
-    'VizGan',
-    'Tam',
-  ];
-
   teamMembers: TeamMember[] = [
     {
       name: 'Member1',
@@ -98,10 +88,22 @@ export class TeamlistComponent implements OnInit {
     },
   ];
 
+  teamsList: Team[] = [
+    { name: 'P2P', id: 0, members: this.teamMembers },
+    { name: 'Catalog', id: 1, members: this.teamMembers },
+    { name: 'Cornerstone', id: 2, members: this.teamMembers },
+    { name: 'Data Crispr', id: 3, members: this.teamMembers },
+    { name: 'CLO', id: 4, members: this.teamMembers },
+    { name: 'SSO', id: 5, members: this.teamMembers },
+    { name: 'VizGan', id: 6, members: this.teamMembers },
+    { name: 'Tam', id: 7, members: this.teamMembers },
+  ];
   constructor(public dialog: MatDialog) {}
 
-  addMember(teamsList: string[], selectedTeam: string) {
+  addMember(teamsList: Team[], selectedTeam: Team) {
     this.dialog.open(AddMemberDialogComponent, {
+      minHeight: '20vh',
+      minWidth: '30vw',
       data: { teamsList, selectedTeam },
     });
   }

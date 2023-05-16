@@ -4,51 +4,53 @@
   </mat-card-header>
 
   <div class="team-container">
-  <mat-card-content class="team-content">
-    <mat-accordion class="team-accordion" multi>
-      <mat-expansion-panel
-        *ngFor="let teams of teamsList"
-        class="team-expansion-panel"
-      >
-        <mat-expansion-panel-header>
-          <mat-panel-title class="panel-title">{{ teams }}</mat-panel-title>
-        </mat-expansion-panel-header>
+    <mat-card-content class="team-content">
+      <mat-accordion class="team-accordion" multi>
+        <mat-expansion-panel
+          *ngFor="let team of teamsList"
+          class="team-expansion-panel"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title class="panel-title">{{
+              team.name
+            }}</mat-panel-title>
+          </mat-expansion-panel-header>
 
-        <div class="imgPath">
-          <div *ngFor="let teamMember of teamMembers">
-            <img
-              *ngIf="teamMember.coverImagePath; else useAvatar"
-              src="{{ teamMember.coverImagePath }}"
-              class="avatar"
-              matTooltip="{{ teamMember.name }}"
-              [matTooltipClass]="'teammembertooltip'"
-              [matTooltipPosition]="'above'"
-            />
-            <ng-template #useAvatar
-              ><img
+          <div class="imgPath">
+            <div *ngFor="let teamMember of team.members">
+              <img
+                *ngIf="teamMember.coverImagePath; else useAvatar"
+                src="{{ teamMember.coverImagePath }}"
                 class="avatar"
-                src="assets/avatar.png"
                 matTooltip="{{ teamMember.name }}"
                 [matTooltipClass]="'teammembertooltip'"
                 [matTooltipPosition]="'above'"
               />
-            </ng-template>
+              <ng-template #useAvatar
+                ><img
+                  class="avatar"
+                  src="assets/avatar.png"
+                  matTooltip="{{ teamMember.name }}"
+                  [matTooltipClass]="'teammembertooltip'"
+                  [matTooltipPosition]="'above'"
+                />
+              </ng-template>
+            </div>
           </div>
-        </div>
 
-        <mat-action-row class="icon-holder">
-          <mat-icon
-            (click)="addMember(this.teamsList, teams)"
-            class="person-icon"
-            matTooltip="Add Member"
-            [matTooltipPosition]="'above'">
+          <mat-action-row class="icon-holder">
+            <mat-icon
+              (click)="addMember(this.teamsList, team)"
+              class="person-icon"
+              matTooltip="Add Member"
+              [matTooltipPosition]="'above'"
+            >
               person_add
-          </mat-icon>
-        </mat-action-row>
-
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-card-content>
+            </mat-icon>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
   </div>
   <mat-action-row class="action-row">
     <mat-icon
