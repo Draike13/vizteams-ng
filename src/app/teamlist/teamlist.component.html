@@ -3,6 +3,7 @@
     <mat-card-title class="team-title">Teams</mat-card-title>
   </mat-card-header>
 
+  <div class="team-container">
   <mat-card-content class="team-content">
     <mat-accordion class="team-accordion" multi>
       <mat-expansion-panel
@@ -34,18 +35,21 @@
             </ng-template>
           </div>
         </div>
+
         <mat-action-row class="icon-holder">
           <mat-icon
             (click)="addMember(this.teamsList, teams)"
             class="person-icon"
             matTooltip="Add Member"
-            [matTooltipPosition]="'above'"
-            >person_add</mat-icon
-          >
+            [matTooltipPosition]="'above'">
+              person_add
+          </mat-icon>
         </mat-action-row>
+
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>
+  </div>
   <mat-action-row class="action-row">
     <mat-icon
       matTooltip="Add Team"
