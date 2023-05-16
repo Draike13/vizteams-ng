@@ -25,6 +25,7 @@ import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatTooltipModule,
     HttpClientModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

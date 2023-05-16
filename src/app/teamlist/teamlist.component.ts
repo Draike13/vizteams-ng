@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-teamlist',
@@ -102,8 +100,10 @@ export class TeamlistComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  addMember() {
-    this.dialog.open(AddMemberDialogComponent);
+  addMember(teamsList: string[], selectedTeam: string) {
+    this.dialog.open(AddMemberDialogComponent, {
+      data: { teamsList, selectedTeam },
+    });
   }
   addTeam() {
     this.dialog.open(AddTeamDialogComponent, {

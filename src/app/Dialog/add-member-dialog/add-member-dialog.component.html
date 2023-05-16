@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill">
+  <mat-label>Input</mat-label>
+  <input matInput />
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>{{ data.selectedTeam }}</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let teams of data.teamsList" value="">
+      {{ teams }}</mat-option
+    >
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Textarea</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
