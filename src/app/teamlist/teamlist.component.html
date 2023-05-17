@@ -17,12 +17,12 @@
           </mat-expansion-panel-header>
 
           <div class="imgPath">
-            <div *ngFor="let teamMember of team.members">
+            <div *ngFor="let teamMember of team.team_members">
               <img
-                *ngIf="teamMember.coverImagePath; else useAvatar"
-                src="{{ teamMember.coverImagePath }}"
+                *ngIf="teamMember.img_url; else useAvatar"
+                src="{{ teamMember.img_url }}"
                 class="avatar"
-                matTooltip="{{ teamMember.name }}"
+                matTooltip="{{ teamMember.fname }}"
                 [matTooltipClass]="'teammembertooltip'"
                 [matTooltipPosition]="'above'"
               />
@@ -30,7 +30,7 @@
                 ><img
                   class="avatar"
                   src="assets/avatar.png"
-                  matTooltip="{{ teamMember.name }}"
+                  matTooltip="{{ teamMember.fname }}"
                   [matTooltipClass]="'teammembertooltip'"
                   [matTooltipPosition]="'above'"
                 />
@@ -39,7 +39,7 @@
           </div>
 
           <mat-action-row class="icon-holder">
-            <div class="counter">{{ team.members?.length ?? 0 }}/12</div>
+            <div class="counter">{{ team.team_members?.length ?? 0 }}/12</div>
             <mat-icon
               (click)="addMember(this.teamsList, team)"
               class="person-icon"

@@ -1,6 +1,7 @@
 export interface TeamMember {
-  name: string;
+  fname: string;
+  lname: string;
+  team: string;
   title: string;
-  coverImagePath?: string;
-  id?: string;
+  img_url?: string;
 }

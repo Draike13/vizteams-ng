@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Team } from '../models/team.model';
+import { TeamMember } from '../models/teamMember.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,12 @@ export class DatabaseService {
   constructor(private http: HttpClient) {}
 
   updateTeams() {
-    return this.http.get<Team[]>(this.teamUrl).subscribe((teamlist) => {
-      this.teamList$.next(teamlist);
+    return this.http.get<Team[]>(this.teamUrl).subscribe((teamList) => {
+      this.teamList$.next(teamList);
     });
+  }
+  getMembers(id: number) {
+    return this.http.get<TeamMember[]>(`${this.teamUrl}/${id}/team_members`);
   }
 
   getTeamsList() {

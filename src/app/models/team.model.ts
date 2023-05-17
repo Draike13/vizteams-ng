@@ -3,5 +3,6 @@ import { TeamMember } from './teamMember.model';
 export interface Team {
   id: number;
   name: string;
-  members?: TeamMember[];
+  description: string;
+  team_members?: TeamMember[];
 }
