@@ -15,7 +15,6 @@ export class InfoContainerComponent implements OnInit {
   ngOnInit(): void {
     this.databaseService.infoPanel$.subscribe((res) => {
       this.infoDisplay = res;
-      console.log(this.infoDisplay);
     });
   }
 }
