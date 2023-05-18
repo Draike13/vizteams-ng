@@ -11,27 +11,23 @@
   <mat-card-header>
     <mat-card-title class="team-title">{{ infoDisplay.name }}</mat-card-title>
   </mat-card-header>
-  <div>
-    <mat-card-content>
-      <div
-        class="content-holder"
-        *ngFor="let member of infoDisplay.team_members"
-      >
-        <div class="imgPath">
-          <img
-            *ngIf="member.img_url; else useAvatar"
-            src="{{ member.img_url }}"
-            class="avatar"
-          />
-          <ng-template #useAvatar
-            ><img class="avatar" src="assets/avatar.png" />
-          </ng-template>
-        </div>
-        <div class="text-holder">
-          <div class="name">{{ member.fname }} {{ member.lname }}</div>
-          <div class="title">{{ member.title }}</div>
-        </div>
+
+  <mat-card-content class="mat-card-content">
+    <div class="content-holder" *ngFor="let member of infoDisplay.team_members">
+      <div class="imgPath">
+        <img
+          *ngIf="member.img_url; else useAvatar"
+          src="{{ member.img_url }}"
+          class="avatar"
+        />
+        <ng-template #useAvatar
+          ><img class="avatar" src="assets/avatar.png" />
+        </ng-template>
       </div>
-    </mat-card-content>
-  </div>
+      <div class="text-holder">
+        <div class="name">{{ member.fname }} {{ member.lname }}</div>
+        <div class="title">{{ member.title }}</div>
+      </div>
+    </div>
+  </mat-card-content>
 </mat-card>

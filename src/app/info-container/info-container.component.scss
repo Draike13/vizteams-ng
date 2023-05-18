@@ -9,7 +9,6 @@
   font-weight: 500;
 }
 .info-card {
-  display: flex;
   min-height: 70%;
   margin-left: 50px;
   margin-top: 50px;
@@ -41,6 +40,7 @@
 
 .content-holder {
   display: flex;
+  width: 45%;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
@@ -51,4 +51,11 @@
   flex-direction: column;
   justify-content: flex-end;
   font-size: larger;
+}
+
+.mat-card-content {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
