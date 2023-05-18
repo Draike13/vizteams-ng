@@ -5,7 +5,6 @@ import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialo
 import { MatDialog } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { DatabaseService } from '../services/database.service';
-import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-teamlist',
@@ -13,12 +12,18 @@ import { MatAccordion } from '@angular/material/expansion';
   styleUrls: ['./teamlist.component.scss'],
 })
 export class TeamlistComponent implements OnInit {
+  toggle: boolean = false;
   teamMembers: TeamMember[] = [];
   teamsList: Team[] = [];
   constructor(
     private databaseService: DatabaseService,
     public dialog: MatDialog
   ) {}
+
+  togglePanel() {
+    this.toggle = !this.toggle;
+    console.log(this.toggle);
+  }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
     this.dialog.open(AddMemberDialogComponent, {
