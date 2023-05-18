@@ -1,8 +1,37 @@
-<mat-card class="info-card">
+<mat-card *ngIf="!infoDisplay" class="default-display">
   <mat-card-header>
-    <mat-card-title class="team-title">{{ infoDisplay?.name }}</mat-card-title>
-    <mat-card-subtitle *ngIf="!infoDisplay" class="empty-card-text"
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle class="empty-card-text"
       >Select a team to view members</mat-card-subtitle
     >
   </mat-card-header>
+</mat-card>
+
+<mat-card *ngIf="infoDisplay" class="info-card">
+  <mat-card-header>
+    <mat-card-title class="team-title">{{ infoDisplay.name }}</mat-card-title>
+  </mat-card-header>
+  <div>
+    <mat-card-content>
+      <div
+        class="content-holder"
+        *ngFor="let member of infoDisplay.team_members"
+      >
+        <div class="imgPath">
+          <img
+            *ngIf="member.img_url; else useAvatar"
+            src="{{ member.img_url }}"
+            class="avatar"
+          />
+          <ng-template #useAvatar
+            ><img class="avatar" src="assets/avatar.png" />
+          </ng-template>
+        </div>
+        <div class="text-holder">
+          <div class="name">{{ member.fname }} {{ member.lname }}</div>
+          <div class="title">{{ member.title }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </div>
 </mat-card>

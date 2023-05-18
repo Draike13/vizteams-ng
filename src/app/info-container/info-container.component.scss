@@ -1,6 +1,6 @@
 .team-title {
   font-size: xx-large;
-  padding: 4px;
+  padding: 16px;
 }
 
 .empty-card-text {
@@ -14,10 +14,41 @@
   margin-left: 50px;
   margin-top: 50px;
   margin-right: 50px;
+}
+.default-display {
+  display: flex;
+  min-height: 70%;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-right: 50px;
   align-items: center;
   justify-content: center;
 }
-
 .mat-card-header {
   color: rgb(161, 154, 154);
+}
+
+.imgPath {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.avatar {
+  height: 12vh;
+  width: 6vw;
+  padding: 8px;
+}
+
+.content-holder {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.text-holder {
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: larger;
 }
