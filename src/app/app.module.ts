@@ -26,6 +26,7 @@ import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog
     ReactiveFormsModule,
     MatTooltipModule,
     HttpClientModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

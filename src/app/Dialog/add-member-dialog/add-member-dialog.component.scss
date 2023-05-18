@@ -1,0 +1,44 @@
+mat-label {
+  font-size: large;
+}
+.input-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.select-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.first-name {
+  min-width: 15vw;
+  margin: 8px;
+}
+.last-name {
+  min-width: 15vw;
+  margin: 8px;
+}
+
+.title {
+  min-width: 15vw;
+  margin: 8px;
+}
+
+.team {
+  min-width: 15vw;
+  margin: 8px;
+}
+.button-holder {
+  display: flex;
+  justify-content: flex-end;
+}
+.cancel-button {
+  margin: 8;
+}
+.submit-button {
+  margin: 8;
+}

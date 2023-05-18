@@ -4,11 +4,14 @@ import { Router } from '@angular/router';
 import { UserService } from './user.service';
 import { TeamMember } from '../models/teamMember.model';
 import { Token } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  apiUrl = environment.apiUrl;
+
   constructor(
     private http: HttpClient,
     private route: Router,
@@ -16,7 +19,7 @@ export class AuthService {
   ) {}
 
   login(user) {
-    return this.http.post('http://localhost:3000/auth/login', user);
+    return this.http.post(`${this.apiUrl}auth/login`, user);
   }
 
   autoSignIn() {
@@ -26,14 +29,15 @@ export class AuthService {
       return;
     }
     this.http
-      .get('http://localhost:3000/users', {
+      .get(`${this.apiUrl}users`, {
         headers: {
           Authorization: 'Bearer ' + token,
         },
       })
       .subscribe((res: any) => {
-        if (res[0].email != null) {
-          this.userService.setCurrentUser(res[0].email);
+        console.log('PAYLOAD', res);
+        if (res.email != null) {
+          this.userService.setCurrentUser(res.email);
         }
       });
   }
