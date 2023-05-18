@@ -4,13 +4,13 @@ mat-label {
 .input-holder {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 .select-holder {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -34,7 +34,7 @@ mat-label {
 }
 .button-holder {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .cancel-button {
   margin: 8;

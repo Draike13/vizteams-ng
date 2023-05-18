@@ -10,7 +10,7 @@ import { TeamMember } from '../models/teamMember.model';
 export class DatabaseService {
   teamUrl = 'http://localhost:3000/teams';
   teamList$: Subject<Team[]> = new Subject();
-
+  infoPanel$: Subject<Team> = new Subject();
   constructor(private http: HttpClient) {}
 
   updateTeams() {
@@ -18,6 +18,7 @@ export class DatabaseService {
       this.teamList$.next(teamList);
     });
   }
+
   getMembers(id: number) {
     return this.http.get<TeamMember[]>(`${this.teamUrl}/${id}/team_members`);
   }

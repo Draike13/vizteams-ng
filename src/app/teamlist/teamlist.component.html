@@ -11,7 +11,7 @@
           class="team-expansion-panel"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title class="panel-title">{{
+            <mat-panel-title (click)="displayTeam(team)" class="panel-title">{{
               team.name
             }}</mat-panel-title>
           </mat-expansion-panel-header>
@@ -22,7 +22,7 @@
                 *ngIf="teamMember.img_url; else useAvatar"
                 src="{{ teamMember.img_url }}"
                 class="avatar"
-                matTooltip="{{ teamMember.fname }}"
+                matTooltip="{{ teamMember.lname }}, {{ teamMember.fname }}"
                 [matTooltipClass]="'teammembertooltip'"
                 [matTooltipPosition]="'above'"
               />
@@ -30,7 +30,7 @@
                 ><img
                   class="avatar"
                   src="assets/avatar.png"
-                  matTooltip="{{ teamMember.fname }}"
+                  matTooltip="{{ teamMember.lname }}, {{ teamMember.fname }}"
                   [matTooltipClass]="'teammembertooltip'"
                   [matTooltipPosition]="'above'"
                 />

@@ -29,7 +29,7 @@
 
 .icon-holder {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .person-icon {
@@ -68,7 +68,7 @@
 }
 ::ng-deep .teammembertooltip {
   margin: -5;
-  position: absolute;
+  flex-wrap: nowrap;
   top: -35px;
   left: -40px;
   padding: 0px;
