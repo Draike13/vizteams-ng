@@ -13,9 +13,7 @@ export class DatabaseService {
   teamList$: Subject<Team[]> = new Subject();
   infoPanel$: Subject<Team> = new Subject();
 
-  constructor(private http: HttpClient) {
-    console.log(this.apiUrl);
-  }
+  constructor(private http: HttpClient) {}
 
   updateTeams() {
     return this.http.get<Team[]>(this.teamUrl).subscribe((teamList) => {
