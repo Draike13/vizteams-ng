@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { DatabaseService } from '../services/database.service';
 import { MatAccordion } from '@angular/material/expansion';
