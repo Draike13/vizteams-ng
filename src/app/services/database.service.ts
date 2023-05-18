@@ -3,15 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Team } from '../models/team.model';
 import { TeamMember } from '../models/teamMember.model';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseService {
-  teamUrl = 'http://localhost:3000/teams';
+  apiUrl = environment.apiUrl;
+  teamUrl = `${this.apiUrl}teams`;
   teamList$: Subject<Team[]> = new Subject();
   infoPanel$: Subject<Team> = new Subject();
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) {
+    console.log(this.apiUrl);
+  }
 
   updateTeams() {
     return this.http.get<Team[]>(this.teamUrl).subscribe((teamList) => {
