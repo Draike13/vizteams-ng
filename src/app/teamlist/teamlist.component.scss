@@ -1,7 +1,15 @@
+.team-title {
+  font-size: xx-large;
+  padding: 4px;
+  cursor: pointer;
+}
+
 .panel-wrapper {
   border-bottom: 2px solid black;
 }
 .panel-title {
+  font-size: larger;
+  padding: 4px;
   color: rgb(161, 154, 154);
 }
 .add-team {
@@ -10,12 +18,14 @@
   cursor: pointer;
 }
 .action-row {
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: flex-end;
+  background-color: white; /* Add a background color to ensure visibility */
+  z-index: 1;
 }
 
 .icon-holder {
@@ -55,12 +65,30 @@
 .imgPath {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 ::ng-deep .teammembertooltip {
   margin: -5;
-  position: absolute;
+  flex-wrap: nowrap;
   top: -35px;
   left: -40px;
   padding: 0px;
+}
+.team-card {
+  height: 80vh; /* Set a fixed height for the card */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative; /* Add position relative to create stacking context */
+}
+.team-container {
+  min-height: 85%; /*keeps scroll bar from being always active and action row sticky */
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.counter {
+  margin-right: 16px;
+  padding-top: 8px;
+}
+.image {
+  padding-right: 8px;
 }

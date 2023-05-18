@@ -25,6 +25,7 @@ import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
 import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
 
 @NgModule({
@@ -54,8 +55,9 @@ import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatTooltipModule,
+    HttpClientModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

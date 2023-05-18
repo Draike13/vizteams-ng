@@ -8,29 +8,27 @@
 }
 
 .vizlogo {
-  width:100px;
+  width: 100px;
   border-right-style: solid;
   border-right-color: #cc3e00;
   border-right-width: 1px;
-  padding-right:10px;
+  padding-right: 10px;
   align-items: center;
 }
 
 .useroremail {
   text-align: justify;
   color: #f5f5f5;
-  position:absolute;
-  right:10px;
+  position: absolute;
+  right: 10px;
   font-size: 20px;
-
-
+  cursor: pointer;
 }
 
 .vizteams {
-  padding-left:10px;
+  padding-left: 10px;
   font-size: 20px;
   align-content: center;
   text-align: center;
   color: #f5f5f5;
-
 }
