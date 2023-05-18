@@ -64,7 +64,7 @@
 .imgPath {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 ::ng-deep .teammembertooltip {
   margin: -5;
@@ -87,4 +87,7 @@
 .counter {
   margin-right: 16px;
   padding-top: 8px;
+}
+.image {
+  padding-right: 8px;
 }

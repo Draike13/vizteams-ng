@@ -17,7 +17,7 @@
           </mat-expansion-panel-header>
 
           <div class="imgPath">
-            <div *ngFor="let teamMember of team.team_members">
+            <div class="image" *ngFor="let teamMember of team.team_members">
               <img
                 *ngIf="teamMember.img_url; else useAvatar"
                 src="{{ teamMember.img_url }}"
