@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
     this.userService.currentUserSubject.subscribe((user) => {
       this.currentUser = user;
     });
-    console.log('From header', this.currentUser);
   }
 
   showProfile() {}
