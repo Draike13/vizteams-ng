@@ -25,7 +25,12 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <div class="imgPath">
+          <div
+            class="imgPath"
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="drop($event)"
+          >
             <div
               class="image"
               *ngFor="let teamMember of team.team_members"

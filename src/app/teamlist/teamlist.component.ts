@@ -51,6 +51,7 @@ export class TeamlistComponent implements OnInit {
   }
   displayTeam(team: Team) {
     this.databaseService.infoPanel$.next(team);
+    this.teamMembers = team.team_members;
   }
 
   ngOnInit(): void {
@@ -81,23 +82,8 @@ export class TeamlistComponent implements OnInit {
     }
   }
 
-  dropImage(event: CdkDragDrop<any[]>) {
-    console.log('DROPPED!', event);
-    if (event.previousContainer !== event.container) {
-      // Move the image from the source container to the target container
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      // Reorder the image within the same container
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+  drop(event: CdkDragDrop<string[]>) {
+    console.log('EVENT: ', event);
+    moveItemInArray(this.teamMembers, event.previousIndex, event.currentIndex);
   }
 }
