@@ -5,11 +5,11 @@
     </mat-card-title>
   </mat-card-header>
 
-  <mat-progress-bar 
+  <mat-progress-bar
     *ngIf="isLoading"
-    mode="determinate" 
+    mode="determinate"
     [value]="progressValue"
-    ></mat-progress-bar>
+  ></mat-progress-bar>
 
   <div class="team-container">
     <mat-card-content class="team-content">
@@ -20,13 +20,17 @@
           class="team-expansion-panel"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title (click)="displayTeam(team)" class="panel-title">{{
-              team.name
-            }}</mat-panel-title>
+            <mat-panel-title (click)="displayTeam(team)" class="panel-title"
+              >{{ team.name }}
+            </mat-panel-title>
           </mat-expansion-panel-header>
 
           <div class="imgPath">
-            <div class="image" *ngFor="let teamMember of team.team_members">
+            <div
+              class="image"
+              *ngFor="let teamMember of team.team_members"
+              cdkDrag
+            >
               <img
                 *ngIf="teamMember.img_url; else useAvatar"
                 src="{{ teamMember.img_url }}"
@@ -34,6 +38,7 @@
                 matTooltip="{{ teamMember.lname }}, {{ teamMember.fname }}"
                 [matTooltipClass]="'teammembertooltip'"
                 [matTooltipPosition]="'above'"
+                cdkDrag
               />
               <ng-template #useAvatar
                 ><img

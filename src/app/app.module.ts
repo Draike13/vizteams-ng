@@ -27,6 +27,7 @@ import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AuthInterceptor } from './auth.interceptor';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AuthInterceptor } from './auth.interceptor';
     HttpClientModule,
     MatSelectModule,
     MatProgressBarModule,
+    DragDropModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

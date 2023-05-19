@@ -5,8 +5,12 @@ import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialo
 import { MatDialog } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { DatabaseService } from '../services/database.service';
-import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-teamlist',
@@ -74,6 +78,26 @@ export class TeamlistComponent implements OnInit {
         this.teamsList = value;
       });
       this.databaseService.updateTeams();
+    }
+  }
+
+  dropImage(event: CdkDragDrop<any[]>) {
+    console.log('DROPPED!', event);
+    if (event.previousContainer !== event.container) {
+      // Move the image from the source container to the target container
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      // Reorder the image within the same container
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
   }
 }
