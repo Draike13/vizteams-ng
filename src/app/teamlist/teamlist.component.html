@@ -15,12 +15,13 @@
     <mat-card-content class="team-content">
       <mat-accordion class="team-accordion" multi>
         <mat-expansion-panel
+          (click)="displayTeam(team)"
           [expanded]="toggle"
           *ngFor="let team of teamsList"
           class="team-expansion-panel"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title (click)="displayTeam(team)" class="panel-title"
+            <mat-panel-title class="panel-title"
               >{{ team.name }}
             </mat-panel-title>
           </mat-expansion-panel-header>
