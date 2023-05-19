@@ -50,6 +50,8 @@ export class AuthService {
 
   setToken(token: any) {
     localStorage.setItem('token', JSON.stringify(token));
+    // Refresh the page
+    location.reload();
   }
 
   removeToken() {
