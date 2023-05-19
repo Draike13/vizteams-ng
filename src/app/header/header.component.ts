@@ -34,4 +34,8 @@ export class HeaderComponent implements OnInit {
   }
 
   showProfile() {}
+
+  logout() {
+    this.authService.signOut();
+  }
 }

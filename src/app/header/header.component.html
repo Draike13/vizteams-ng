@@ -8,7 +8,11 @@
       (click)="showProfile()"
     >
       {{ currentUser }}
-    </span>
+      <span *ngIf="currentUser" class="logout" (click)="logout()"
+        >(Logout)</span
+      ></span
+    ><br />
+
     <ng-template #loggedOut>
       <span class="useroremail" (click)="signUpIn()">Sign In</span>
     </ng-template>

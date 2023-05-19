@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   createUser(newUser) {
-    return this.http.post(`${this.apiUrl}users`, newUser)
+    return this.http.post(`${this.apiUrl}users`, newUser);
   }
 
   getToken() {
@@ -58,19 +58,15 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  logout() {
-    const token = this.getToken();
-    this.http
-      .delete('http://localhost:3000/users/logout', {
-        headers: {
-          Authorization: 'Bearer ' + token.value,
-        },
-      })
-      .subscribe((res: any) => {
-        if (res.success) {
-          this.removeToken();
-          this.userService.setCurrentUser(null);
-        }
-      });
+  // Sign out
+  signOut() {
+    // Emit null through the behavior subject
+    this.userService.setCurrentUser = null;
+
+    // Remove the User Instance from localStorage
+    localStorage.removeItem('token');
+
+    // Refresh the page
+    location.reload();
   }
 }

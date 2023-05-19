@@ -1,3 +1,4 @@
+<!-- SIGNIN -->
 <div class="sign-in" *ngIf="inOrUp">
   <p>
     <mat-form-field appearance="fill">
@@ -32,7 +33,7 @@
         (click)="hide = !hide"
         >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
       >
-      <mat-hint>Create a password</mat-hint>
+      <mat-hint>Enter your password</mat-hint>
       <mat-error *ngIf="passControl.invalid">{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
   </p>
@@ -59,6 +60,9 @@
     </button>
   </div>
 </div>
+
+<!-- SIGNUP -->
+
 <div class="sign-up" *ngIf="!inOrUp">
   <p>
     <mat-form-field appearance="fill">
