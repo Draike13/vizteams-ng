@@ -4,7 +4,6 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { SignUpComponent } from '../Dialog/sign-up-in-dialog/sign-up.component';
 
 @Component({
   selector: 'app-sign-in-form',

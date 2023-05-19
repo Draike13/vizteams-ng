@@ -13,7 +13,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SignUpInDialogComponent } from './Dialog/sign-up-in-dialog/sign-up-in-dialog.component';
-import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +23,6 @@ import { TooltipPosition } from '@angular/material/tooltip';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { AddMemberDialogComponent } from './Dialog/add-member-dialog/add-member-dialog.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -36,11 +34,9 @@ import { AuthInterceptor } from './auth.interceptor';
     HeaderComponent,
     TeamlistComponent,
     SignUpInDialogComponent,
-    SignUpFormComponent,
     InfoContainerComponent,
     SignInFormComponent,
     AddMemberDialogComponent,
-    SignUpComponent,
     AddTeamDialogComponent,
   ],
   imports: [
