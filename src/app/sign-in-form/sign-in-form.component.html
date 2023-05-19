@@ -100,7 +100,7 @@
 
   <p>
     <mat-form-field appearance="outline">
-      <mat-label>Password Cofirmation</mat-label>
+      <mat-label>Password Confirmation</mat-label>
       <input
         [formControl]="passConfirmControl"
         matInput
@@ -120,7 +120,7 @@
       }}</mat-error>
     </mat-form-field>
   </p>
-
+  <a (click)="loggle()">Sign In</a>
   <div class="form-buttons">
     <button
       [mat-dialog-close]="true"
