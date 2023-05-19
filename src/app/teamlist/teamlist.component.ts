@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { DatabaseService } from '../services/database.service';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-teamlist',
@@ -18,12 +19,12 @@ export class TeamlistComponent implements OnInit {
   teamsList: Team[] = [];
   progressValue: number = 0;
   isLoading: boolean = false;
-  currentUser;
+  currentUser: any;
 
   constructor(
     private databaseService: DatabaseService,
     public dialog: MatDialog,
-    private userService: UserService
+    private authService: AuthService
   ) {}
 
   togglePanel() {
@@ -50,15 +51,12 @@ export class TeamlistComponent implements OnInit {
 
   ngOnInit(): void {
     // Check if there is a currentUser logged in
-    this.currentUser = this.userService.currentUserSubject.subscribe((user) => {
-      this.currentUser = user;
-    });
+    const isLoggedIn = this.authService.getToken();
 
-    if (this.currentUser) {
+    // If there is a user, run the progress bar
+    if (isLoggedIn) {
       const totalSteps = 100; // Total number of loading steps
       const intervalDuration = 10; // Duration between each step in milliseconds
-
-      console.log('RUNNING PROGRESS');
       this.isLoading = true;
       // Start the loading progress
       const loadingInterval = setInterval(() => {

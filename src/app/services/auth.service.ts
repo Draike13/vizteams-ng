@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
-import { TeamMember } from '../models/teamMember.model';
-import { Token } from '@angular/compiler';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

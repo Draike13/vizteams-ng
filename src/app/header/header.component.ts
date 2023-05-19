@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { SignUpInDialogComponent } from '../Dialog/sign-up-in-dialog/sign-up-in-dialog.component';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
-import { SignUpComponent } from '../Dialog/sign-up-in-dialog/sign-up.component';
 
 @Component({
   selector: 'app-header',
@@ -31,6 +30,7 @@ export class HeaderComponent implements OnInit {
     this.userService.currentUserSubject.subscribe((user) => {
       this.currentUser = user;
     });
+    console.log('From header', this.currentUser);
   }
 
   showProfile() {}
