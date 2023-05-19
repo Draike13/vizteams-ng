@@ -1,57 +1,145 @@
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input
-      matInput
-      [formControl]="emailControl"
-      placeholder="Email@Vizient.com"
-      required
-    />
-    <mat-icon matSuffix>email</mat-icon>
-    <mat-hint>Enter a valid email</mat-hint>
-    <mat-error *ngIf="emailControl.invalid">{{ getErrorMessage() }}</mat-error>
-  </mat-form-field>
-</p>
+<div class="sign-in" *ngIf="inOrUp">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [formControl]="emailControl"
+        placeholder="Email@Vizient.com"
+        required
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Enter a valid email</mat-hint>
+      <mat-error *ngIf="emailControl.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+  </p>
 
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input
-      [formControl]="passControl"
-      matInput
-      [type]="hide ? 'password' : 'text'"
-      required
-    />
-    <mat-icon
-      class="hide-icon"
-      mat-icon-button
-      matSuffix
-      (click)="hide = !hide"
-      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        [formControl]="passControl"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        required
+      />
+      <mat-icon
+        class="hide-icon"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+      >
+      <mat-hint>Create a password</mat-hint>
+      <mat-error *ngIf="passControl.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+  </p>
+
+  <a (click)="loggle()">Sign Up</a>
+  <div class="form-buttons">
+    <button
+      [mat-dialog-close]="true"
+      (click)="onSubmit()"
+      style="margin-right: 5px"
+      color="primary"
+      mat-raised-button
+      type="submit"
+      [disabled]="
+        this.emailControl.hasError('email') ||
+        this.emailControl.hasError('required') ||
+        this.passControl.hasError('required')
+      "
     >
-    <mat-hint>Create a password</mat-hint>
-    <mat-error *ngIf="passControl.invalid">{{ getErrorMessage() }}</mat-error>
-  </mat-form-field>
-</p>
+      Sign In
+    </button>
+    <button [mat-dialog-close]="true" color="warn" mat-raised-button>
+      Cancel
+    </button>
+  </div>
+</div>
+<div class="sign-up" *ngIf="!inOrUp">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [formControl]="emailControl"
+        placeholder="Email@Vizient.com"
+        required
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Enter a valid email</mat-hint>
+      <mat-error *ngIf="emailControl.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+  </p>
 
-<a href="" (click)="signUp()">Sign Up</a>
-<div class="form-buttons">
-  <button
-    [mat-dialog-close]="true"
-    (click)="onSubmit()"
-    style="margin-right: 5px"
-    color="primary"
-    mat-raised-button
-    type="submit"
-    [disabled]="
-      this.emailControl.hasError('email') ||
-      this.emailControl.hasError('required') ||
-      this.passControl.hasError('required')
-    "
-  >
-    Sign In
-  </button>
-  <button [mat-dialog-close]="true" color="warn" mat-raised-button>
-    Cancel
-  </button>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        [formControl]="passControl"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        required
+      />
+      <mat-icon
+        class="hide-icon"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+      >
+      <mat-hint>Create a password</mat-hint>
+      <mat-error *ngIf="passControl.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Password Cofirmation</mat-label>
+      <input
+        [formControl]="passConfirmControl"
+        matInput
+        [type]="hideConfirm ? 'password' : 'text'"
+        required
+      />
+      <mat-icon
+        class="hide-icon"
+        mat-icon-button
+        matSuffix
+        (click)="hideConfirm = !hideConfirm"
+        >{{ hideConfirm ? "visibility_off" : "visibility" }}</mat-icon
+      >
+      <mat-hint>Confirm your password</mat-hint>
+      <mat-error *ngIf="passConfirmControl.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+  </p>
+
+  <div class="form-buttons">
+    <button
+      [mat-dialog-close]="true"
+      (click)="createUser()"
+      style="margin-right: 5px"
+      color="primary"
+      mat-raised-button
+      type="submit"
+      [disabled]="
+        this.emailControl.hasError('email') ||
+        this.emailControl.hasError('required') ||
+        this.passControl.hasError('required') ||
+        this.passConfirmControl.hasError('required')
+      "
+    >
+      Sign Up
+    </button>
+    <button [mat-dialog-close]="true" color="warn" mat-raised-button>
+      Cancel
+    </button>
+  </div>
 </div>

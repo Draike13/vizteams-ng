@@ -8,46 +8,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./sign-up-form.component.scss'],
 })
 export class SignUpFormComponent implements OnInit {
-  emailControl: FormControl;
-  passControl: FormControl;
-  passConfirmControl: FormControl;
-  hide = true;
-  hideConfirm = true;
-
-  constructor(private userService: UserService) {
-    this.emailControl = new FormControl('', [
-      Validators.required,
-      Validators.email,
-    ]);
-    this.passControl = new FormControl();
-    this.passConfirmControl = new FormControl();
-  }
-
+  constructor(private userService: UserService) {}
   ngOnInit(): void {
-    console.log(this.emailControl.hasError);
-  }
-
-  getErrorMessage() {
-    if (this.passControl.hasError('required')) {
-      return 'This field is required';
-    }
-    if (this.passConfirmControl.hasError('required')) {
-      return 'This field is required';
-    }
-
-    if (this.emailControl.hasError('required')) {
-      return 'This field is required';
-    }
-
-    return this.emailControl.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  createUser() {
-    //   let newUser: any = {
-    //     email: this.emailControl.value,
-    //     password: this.passControl.value,
-    //     password_confirmation: this.passConfirmControl.value,
-    //   };
-    //   this.userService.createUser(newUser).subscribe((res) => {});
+    throw new Error('Method not implemented.');
   }
 }

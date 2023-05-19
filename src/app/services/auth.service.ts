@@ -42,6 +42,10 @@ export class AuthService {
       });
   }
 
+  createUser(newUser) {
+    return this.http.post(`${this.apiUrl}users`, newUser)
+  }
+
   getToken() {
     return JSON.parse(localStorage.getItem('token'));
   }

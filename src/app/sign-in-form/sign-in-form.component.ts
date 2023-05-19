@@ -15,6 +15,10 @@ export class SignInFormComponent implements OnInit {
   emailControl: FormControl;
   passControl: FormControl;
   hide = true;
+  passConfirmControl: FormControl;
+  hideConfirm = true;
+  inOrUp: boolean = true;
+  newUser;
 
   constructor(
     private authService: AuthService,
@@ -27,9 +31,8 @@ export class SignInFormComponent implements OnInit {
       Validators.email,
     ]);
     this.passControl = new FormControl();
+    this.passConfirmControl = new FormControl();
   }
-
-  ngOnInit(): void {}
 
   getErrorMessage() {
     if (this.passControl.hasError('required')) {
@@ -48,7 +51,10 @@ export class SignInFormComponent implements OnInit {
       email: this.emailControl.value,
       password: this.passControl.value,
     };
+    this.setToken(user);
+  }
 
+  setToken(user) {
     this.authService.login(user).subscribe((res: any) => {
       if (res.payload.token != null) {
         this.userService.setCurrentUser(res.payload.email);
@@ -58,10 +64,20 @@ export class SignInFormComponent implements OnInit {
     });
   }
 
-  signUp() {
-    this.dialog.open(SignUpComponent, {
-      minHeight: '30vh',
-      minWidth: '25vw',
+  loggle() {
+    this.inOrUp = !this.inOrUp;
+  }
+
+  createUser() {
+    let newUser: any = {
+      email: this.emailControl.value,
+      password: this.passControl.value,
+      password_confirmation: this.passConfirmControl.value,
+    };
+    this.authService.createUser(newUser).subscribe((res) => {
+      this.setToken(newUser);
     });
   }
+
+  ngOnInit(): void {}
 }
