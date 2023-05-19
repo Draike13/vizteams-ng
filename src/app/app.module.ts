@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
 import { AddTeamDialogComponent } from './Dialog/add-team-dialog/add-team-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatTooltipModule,
     HttpClientModule,
     MatSelectModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

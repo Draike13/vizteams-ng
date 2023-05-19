@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { DatabaseService } from '../services/database.service';
 
+
 @Component({
   selector: 'app-teamlist',
   templateUrl: './teamlist.component.html',
@@ -15,6 +16,9 @@ export class TeamlistComponent implements OnInit {
   toggle: boolean = false;
   teamMembers: TeamMember[] = [];
   teamsList: Team[] = [];
+  progressValue: number = 0;
+  isLoading: boolean = false;
+
   constructor(
     private databaseService: DatabaseService,
     public dialog: MatDialog
@@ -43,9 +47,26 @@ export class TeamlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const totalSteps = 100; // Total number of loading steps
+    const intervalDuration = 10; // Duration between each step in milliseconds
+
+    this.isLoading = true;
+    // Start the loading progress
+    const loadingInterval = setInterval(() => {
+      // Increment the progress value
+      this.progressValue += 1;
+
+      // Check if the loading is complete
+      if (this.progressValue >= totalSteps) {
+        clearInterval(loadingInterval); // Stop the loading progress
+        this.isLoading = false; // Hide the progress bar
+      }
+    }, intervalDuration);
+
     this.databaseService.teamList$.subscribe((value) => {
       this.teamsList = value;
     });
     this.databaseService.updateTeams();
+
   }
 }
