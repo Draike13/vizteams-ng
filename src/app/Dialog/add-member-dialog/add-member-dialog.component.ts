@@ -18,9 +18,12 @@ export class AddMemberDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('https://picsum.photos/v2/list?page=2&limit=100/100.jpg')
-      .subscribe((res) => {
+      .get('https://picsum.photos/v2/list?limit=100')
+      .subscribe((res: any) => {
         console.log(res);
+        for (let img of res) {
+          console.log(img.download_url);
+        }
         this.getPicsum = res;
       });
   }

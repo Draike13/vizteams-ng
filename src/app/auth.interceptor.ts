@@ -16,10 +16,17 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    request = request.clone({
-      setHeaders: { Authorization: 'Bearer ' + this.authService.getToken() },
-    });
-
-    return next.handle(request);
+    let newRequest: HttpRequest<unknown>;
+    if (request.url.includes('picsum')) {
+      newRequest = request;
+    } else {
+      newRequest = request.clone({
+        headers: request.headers.append(
+          'Authorization',
+          'Bearer ' + this.authService.getToken()
+        ),
+      });
+    }
+    return next.handle(newRequest);
   }
 }

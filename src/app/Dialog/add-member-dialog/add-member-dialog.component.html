@@ -1,4 +1,9 @@
-<div *ngFor="let pics of getPicsum">{{ pics }}</div>
+<div *ngFor="let pics of getPicsum">
+  <img
+    class="picsum-image"
+    src="http://picsum.photos/id/{{ pics.id }}/100/100"
+  />
+</div>
 
 <div class="input-holder">
   <mat-form-field class="first-name">
