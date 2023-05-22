@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AuthInterceptor } from './auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
 
 @NgModule({
   declarations: [
