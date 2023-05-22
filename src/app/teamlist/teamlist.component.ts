@@ -5,6 +5,12 @@ import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialo
 import { MatDialog } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { DatabaseService } from '../services/database.service';
+import { AuthService } from '../services/auth.service';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-teamlist',
@@ -15,9 +21,14 @@ export class TeamlistComponent implements OnInit {
   toggle: boolean = false;
   teamMembers: TeamMember[] = [];
   teamsList: Team[] = [];
+  progressValue: number = 0;
+  isLoading: boolean = false;
+  currentUser: any;
+
   constructor(
     private databaseService: DatabaseService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   togglePanel() {
@@ -40,12 +51,39 @@ export class TeamlistComponent implements OnInit {
   }
   displayTeam(team: Team) {
     this.databaseService.infoPanel$.next(team);
+    this.teamMembers = team.team_members;
   }
 
   ngOnInit(): void {
-    this.databaseService.teamList$.subscribe((value) => {
-      this.teamsList = value;
-    });
-    this.databaseService.updateTeams();
+    // Check if there is a currentUser logged in
+    const isLoggedIn = this.authService.getToken();
+
+    // If there is a user, run the progress bar
+    if (isLoggedIn) {
+      const totalSteps = 100; // Total number of loading steps
+      const intervalDuration = 10; // Duration between each step in milliseconds
+      this.isLoading = true;
+      // Start the loading progress
+      const loadingInterval = setInterval(() => {
+        // Increment the progress value
+        this.progressValue += 1;
+
+        // Check if the loading is complete
+        if (this.progressValue >= totalSteps) {
+          clearInterval(loadingInterval); // Stop the loading progress
+          this.isLoading = false; // Hide the progress bar
+        }
+      }, intervalDuration);
+
+      this.databaseService.teamList$.subscribe((value) => {
+        this.teamsList = value;
+      });
+      this.databaseService.updateTeams();
+    }
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log('EVENT: ', event);
+    moveItemInArray(this.teamMembers, event.previousIndex, event.currentIndex);
   }
 }

@@ -7,16 +7,19 @@
 .panel-wrapper {
   border-bottom: 2px solid black;
 }
+
 .panel-title {
   font-size: larger;
   padding: 4px;
   color: rgb(161, 154, 154);
 }
+
 .add-team {
   font-size: x-large;
   color: rgba(69, 90, 100, 0.87);
   cursor: pointer;
 }
+
 .action-row {
   position: sticky;
   bottom: 0;
@@ -39,6 +42,7 @@
   color: rgba(69, 90, 100, 0.87);
   cursor: pointer;
 }
+
 .mat-card {
   min-height: 80%;
   max-width: 160%;
@@ -60,6 +64,7 @@
   height: 5vh;
   width: 3vw;
   padding: 1px;
+  cursor: move;
 }
 
 .imgPath {
@@ -67,18 +72,23 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
 }
+
 ::ng-deep .teammembertooltip {
+  position: relative;
   margin: -5;
+  width: auto;
   flex-wrap: nowrap;
-  top: -35px;
-  left: -40px;
+  top: 13px;
+  left: 0px;
   padding: 0px;
 }
+
 .team-card {
   height: 80vh; /* Set a fixed height for the card */
   overflow-y: auto; /* Enable vertical scrolling */
   position: relative; /* Add position relative to create stacking context */
 }
+
 .team-container {
   min-height: 85%; /*keeps scroll bar from being always active and action row sticky */
   padding-bottom: 10px;
@@ -89,6 +99,90 @@
   margin-right: 16px;
   padding-top: 8px;
 }
+
 .image {
   padding-right: 8px;
+}
+
+
+.dragdrop-list {
+  width: 80vw !important;
+  min-height: 30px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.dragdrop-box {
+  border-radius: 10px;
+  box-shadow: 5px 5px 6px #EBF2F5;
+  border: solid 2px #EBF2F5;
+  transition: all ease 0.4s;
+  cursor: auto;
+  padding: 25px 30px 25px !important;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: white;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.75);
+  // margin:20px;
+}
+
+.dragedit-list {
+  width: 80vw !important;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dragedit-box {
+  padding: 10px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 13px;
+  height: 30px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  // box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  //   0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  //   0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: transparent;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.image:last-child {
+  border: none;
+}
+
+.imgPath.cdk-drop-list-dragging .imgPath:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

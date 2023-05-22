@@ -1,26 +1,42 @@
 <mat-card class="team-card">
   <mat-card-header>
-    <mat-card-title (click)="togglePanel()" class="team-title"
-      >Teams</mat-card-title
-    >
+    <mat-card-title (click)="togglePanel()" class="team-title">
+      Teams
+    </mat-card-title>
   </mat-card-header>
+
+  <mat-progress-bar
+    *ngIf="isLoading"
+    mode="determinate"
+    [value]="progressValue"
+  ></mat-progress-bar>
 
   <div class="team-container">
     <mat-card-content class="team-content">
       <mat-accordion class="team-accordion" multi>
         <mat-expansion-panel
+          (click)="displayTeam(team)"
           [expanded]="toggle"
           *ngFor="let team of teamsList"
           class="team-expansion-panel"
         >
           <mat-expansion-panel-header>
-            <mat-panel-title (click)="displayTeam(team)" class="panel-title">{{
-              team.name
-            }}</mat-panel-title>
+            <mat-panel-title class="panel-title"
+              >{{ team.name }}
+            </mat-panel-title>
           </mat-expansion-panel-header>
 
-          <div class="imgPath">
-            <div class="image" *ngFor="let teamMember of team.team_members">
+          <div
+            class="imgPath"
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="image"
+              *ngFor="let teamMember of team.team_members"
+              cdkDrag
+            >
               <img
                 *ngIf="teamMember.img_url; else useAvatar"
                 src="{{ teamMember.img_url }}"
