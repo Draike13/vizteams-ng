@@ -30,6 +30,7 @@ export class InfoContainerComponent implements OnInit {
       console.log('TEAM TO DELTE', team_id);
       if (result.isConfirmed === true) {
         this.databaseService.deleteTeam(team_id).subscribe();
+        location.reload();
       }
     });
   }
