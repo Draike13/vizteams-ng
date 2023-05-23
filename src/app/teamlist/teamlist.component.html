@@ -56,9 +56,12 @@
               </ng-template>
             </div>
           </div>
-
+          <p style="text-align: center" *ngIf="team.team_members?.length < 1">
+            No members on this team.
+          </p>
           <mat-action-row class="icon-holder">
             <div class="counter">{{ team.team_members?.length ?? 0 }}/12</div>
+
             <mat-icon
               (click)="addMember(this.teamsList, team)"
               class="person-icon"
