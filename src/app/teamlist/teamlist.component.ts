@@ -11,6 +11,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-teamlist',

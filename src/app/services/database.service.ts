@@ -32,4 +32,8 @@ export class DatabaseService {
   createTeam(newTeam: any) {
     return this.http.post<Team[]>(this.teamUrl, newTeam);
   }
+
+  deleteTeam(team_id) {
+    return this.http.delete<Team[]>(this.teamUrl, team_id);
+  }
 }
