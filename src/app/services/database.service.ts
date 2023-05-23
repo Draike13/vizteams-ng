@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class DatabaseService {
   apiUrl = environment.apiUrl;
   teamUrl = `${this.apiUrl}teams`;
+  memberUrl = `${this.apiUrl}team_members`;
   teamList$: Subject<Team[]> = new Subject();
   infoPanel$: Subject<Team> = new Subject();
 
@@ -21,8 +22,10 @@ export class DatabaseService {
     });
   }
 
-  getMembers(id: number) {
-    return this.http.get<TeamMember[]>(`${this.teamUrl}/${id}/team_members`);
+  updateMembers() {
+    return this.http.get<Team[]>(this.teamUrl).subscribe((teamList) => {
+      this.teamList$.next(teamList);
+    });
   }
 
   getTeamsList() {
@@ -37,5 +40,9 @@ export class DatabaseService {
     console.log('TEAMID:', team_id);
     console.log(this.teamUrl + '/');
     return this.http.delete<Team[]>(this.teamUrl + '/' + team_id);
+  }
+
+  newTeamMember(newTeamMember) {
+    return this.http.post<TeamMember>(this.memberUrl, newTeamMember);
   }
 }
