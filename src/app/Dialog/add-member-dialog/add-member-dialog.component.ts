@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -9,22 +10,39 @@ import { Subject } from 'rxjs';
   styleUrls: ['./add-member-dialog.component.scss'],
 })
 export class AddMemberDialogComponent implements OnInit {
-  picsum$: Subject<any>;
-  getPicsum: any;
+  picsum: any;
+  pageIndex = 1;
+  pageLength = 100;
+  pageSize = 5;
+  pageEvent: PageEvent;
+  clicked: boolean = false;
+  selectedPic = null;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private http: HttpClient
   ) {}
 
   ngOnInit(): void {
+    this.picsumAvatar();
+  }
+
+  picsumAvatar() {
     this.http
-      .get('https://picsum.photos/v2/list?limit=100')
+      .get(`https://picsum.photos/v2/list?page=${this.pageIndex}&limit=5`)
       .subscribe((res: any) => {
+        this.picsum = res;
         console.log(res);
-        for (let img of res) {
-          console.log(img.download_url);
-        }
-        this.getPicsum = res;
       });
+  }
+
+  event(e: PageEvent) {
+    this.pageEvent = e;
+    this.pageIndex = e.pageIndex;
+    console.log(e.pageIndex);
+    this.picsumAvatar();
+  }
+  focusImage(selctedPic) {
+    this.selectedPic = selctedPic;
   }
 }

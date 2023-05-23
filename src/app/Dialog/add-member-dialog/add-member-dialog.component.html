@@ -1,9 +1,21 @@
-<div *ngFor="let pics of getPicsum">
-  <img
-    class="picsum-image"
-    src="http://picsum.photos/id/{{ pics.id }}/100/100"
-  />
+<div class="picsum-holder">
+  <p *ngFor="let pics of picsum">
+    <img
+      class="picsum-image"
+      [ngClass]="selectedPic === pics ? 'picsum-selected' : 'danger'"
+      (click)="focusImage(pics)"
+      src="http://picsum.photos/id/{{ pics.id }}/150"
+    />
+  </p>
 </div>
+
+<mat-paginator
+  [length]="this.pageLength"
+  [pageSize]="this.pageSize"
+  [pageIndex]="this.pageIndex"
+  (page)="event($event)"
+>
+</mat-paginator>
 
 <div class="input-holder">
   <mat-form-field class="first-name">
