@@ -9,7 +9,9 @@
   font-weight: 500;
 }
 .info-card {
-  min-height: 70%;
+  height: 70%; /* Set a fixed height for the card */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative; /* Add position relative to create stacking context */
   margin-left: 50px;
   margin-top: 50px;
   margin-right: 50px;
@@ -26,11 +28,16 @@
 .mat-card-header {
   color: rgb(161, 154, 154);
 }
-
+mat-card {
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .imgPath {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-left: 16px;
 }
 .avatar {
   height: 12vh;
@@ -67,8 +74,26 @@
   padding-top: 4px;
 }
 
-a{
-  color:blue;
-  text-align: right;
-  text-decoration: underline;
+.archive-button {
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: xx-large;
+}
+
+.icon-action-row {
+  padding-right: 8px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: white; /* Add a background color to ensure visibility */
+  z-index: 1;
+}
+
+.info-holder {
+  min-height: 85%; /*keeps scroll bar from being always active and action row sticky */
+  padding-bottom: 10px;
+  box-sizing: border-box;
 }

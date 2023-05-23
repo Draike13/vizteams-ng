@@ -1,41 +1,64 @@
-<div *ngFor="let pics of getPicsum">
-  <img
-    class="picsum-image"
-    src="http://picsum.photos/id/{{ pics.id }}/100/100"
-  />
-</div>
+<form>
+  <div class="picsum-holder">
+    <p *ngFor="let pics of picsum">
+      <img
+        class="picsum-image"
+        [ngClass]="selectedPic === pics ? 'picsum-selected' : 'danger'"
+        (click)="focusImage(pics)"
+        src="http://picsum.photos/id/{{ pics.id }}/150"
+      />
+    </p>
+  </div>
 
-<div class="input-holder">
-  <mat-form-field class="first-name">
-    <mat-label>First Name</mat-label>
-    <input matInput />
-  </mat-form-field>
+  <mat-paginator
+    [length]="this.pageLength"
+    [pageSize]="this.pageSize"
+    [pageIndex]="this.pageIndex"
+    (page)="event($event)"
+  >
+  </mat-paginator>
 
-  <mat-form-field class="last-name">
-    <mat-label>Last Name</mat-label>
-    <input matInput />
-  </mat-form-field>
-</div>
-<div class="select-holder">
-  <mat-form-field class="title">
-    <mat-label>Title</mat-label>
-    <mat-select>
-      <mat-option value="kingOfVizient">King of Vizient</mat-option>
-      <mat-option value="developer">Developer</mat-option>
-      <mat-option value="litteralTrash">Literal Trash</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="input-holder">
+    <mat-form-field class="first-name">
+      <mat-label>First Name</mat-label>
+      <input [formControl]="fnameControl" matInput />
+    </mat-form-field>
 
-  <mat-form-field class="team">
-    <mat-label>Team</mat-label>
-    <mat-select [value]="this.data.selectedTeam.id">
-      <mat-option *ngFor="let team of data.teamsList" [value]="team.id">
-        {{ team.name }}</mat-option
-      >
-    </mat-select>
-  </mat-form-field>
-</div>
-<div class="button-holder">
-  <button class="cancel-button" mat-button>Cancel</button>
-  <button class="submit-button" mat-button>Submit</button>
-</div>
+    <mat-form-field class="last-name">
+      <mat-label>Last Name</mat-label>
+      <input [formControl]="lnameControl" matInput />
+    </mat-form-field>
+  </div>
+  <div class="select-holder">
+    <mat-form-field class="title">
+      <mat-label>Title</mat-label>
+      <mat-select [formControl]="titleControl">
+        <mat-option value="kingOfVizient">King of Vizient</mat-option>
+        <mat-option value="developer">Developer</mat-option>
+        <mat-option value="litteralTrash">Literal Trash</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="team">
+      <mat-label>Team</mat-label>
+      <mat-select [value]="this.data.selectedTeam.id">
+        <mat-option *ngFor="let team of data.teamsList" [value]="team.id">
+          {{ team.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="button-holder">
+    <button [matDialogClose]="true" class="cancel-button" mat-button>
+      Cancel
+    </button>
+    <button
+      [matDialogClose]="true"
+      (click)="addMember()"
+      class="submit-button"
+      mat-button
+    >
+      Submit
+    </button>
+  </div>
+</form>

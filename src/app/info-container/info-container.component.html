@@ -11,27 +11,38 @@
   <mat-card-header>
     <mat-card-title class="team-title">{{ infoDisplay.name }}</mat-card-title>
   </mat-card-header>
-
-  <mat-card-content class="mat-card-content">
-    <div class="content-holder" *ngFor="let member of infoDisplay.team_members">
-      <div class="imgPath">
-        <img
-          *ngIf="member.img_url; else useAvatar"
-          src="{{ member.img_url }}"
-          class="avatar"
-        />
-        <ng-template #useAvatar
-          ><img class="avatar" src="assets/avatar.png" />
-        </ng-template>
+  <div class="info-holder">
+    <mat-card-content class="mat-card-content">
+      <div
+        class="content-holder"
+        *ngFor="let member of infoDisplay.team_members"
+      >
+        <div class="imgPath">
+          <img
+            *ngIf="member.img_url; else useAvatar"
+            src="{{ member.img_url }}"
+            class="avatar"
+          />
+          <ng-template #useAvatar
+            ><img class="avatar" src="assets/avatar.png" />
+          </ng-template>
+        </div>
+        <div class="text-holder">
+          <div class="name">{{ member.fname }} {{ member.lname }}</div>
+          <div class="title">{{ member.title }}</div>
+        </div>
       </div>
-      <div class="text-holder">
-        <div class="name">{{ member.fname }} {{ member.lname }}</div>
-        <div class="title">{{ member.title }}</div>
-      </div>
+    </mat-card-content>
+    <div class="infoIcons">
+      <hr />
     </div>
-  </mat-card-content>
-  <div class="infoIcons">
-    <hr />
-    <a (click)="deleteTeam(infoDisplay.id)">DELETE</a>
   </div>
+  <mat-action-row class="icon-action-row">
+    <mat-icon
+      class="archive-button"
+      mat-icon-button
+      (click)="deleteTeam(infoDisplay.id)"
+      >archive</mat-icon
+    ></mat-action-row
+  >
 </mat-card>
