@@ -24,6 +24,7 @@ export class TeamlistComponent implements OnInit {
   progressValue: number = 0;
   isLoading: boolean = false;
   currentUser: any;
+  connectedTo = [];
 
   constructor(
     private databaseService: DatabaseService,
