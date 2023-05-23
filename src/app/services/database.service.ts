@@ -34,6 +34,8 @@ export class DatabaseService {
   }
 
   deleteTeam(team_id) {
-    return this.http.delete<Team[]>(this.teamUrl, team_id);
+    console.log('TEAMID:', team_id);
+    console.log(this.teamUrl + '/');
+    return this.http.delete<Team[]>(this.teamUrl + '/' + team_id);
   }
 }

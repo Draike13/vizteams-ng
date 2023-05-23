@@ -29,16 +29,7 @@ export class InfoContainerComponent implements OnInit {
     }).then((result) => {
       console.log('TEAM TO DELTE', team_id);
       if (result.isConfirmed === true) {
-        this.databaseService.deleteTeam({ team_id }).subscribe(
-          (data) => {
-            if (data) {
-              console.log('TEAM DELETED!');
-            }
-          },
-          (error) => {
-            console.error(error);
-          }
-        );
+        this.databaseService.deleteTeam(team_id).subscribe();
       }
     });
   }
