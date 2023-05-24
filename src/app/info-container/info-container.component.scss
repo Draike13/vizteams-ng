@@ -18,6 +18,9 @@
 .info-card {
   height: 70%; /* Set a fixed height for the card */
   margin: 3rem 3rem 0rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .default-display {
   display: flex;
@@ -84,26 +87,21 @@ mat-card {
 }
 
 .archive-button {
-  margin-right: 8px;
+  margin-right: 0.5rem;
   cursor: pointer;
   font-size: xx-large;
 }
 .edit-button {
-  margin-right: 32px;
-  padding-right: 32px;
+  margin-right: 2rem;
+  padding-right: 32rem;
   cursor: pointer;
   font-size: xx-large;
 }
 
 .info-action-row {
-  padding-right: 8px;
-  position: absolute;
-  bottom: 0;
-  width: 95.5%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
-  background-color: white; /* Add a background color to ensure visibility */
-  // z-index: 1;
 }
 
 .breadcrumb-holder {

@@ -18,89 +18,78 @@
       >
     </div>
   </mat-card-header>
-  <div class="padding-div" *ngIf="!selectedMember">
-    <mat-card-content class="mat-card-content">
-      <div
-        class="content-holder"
-        *ngFor="let member of infoDisplay.team_members"
-      >
-        <img
+  <mat-card-content *ngIf="!selectedMember" class="mat-card-content">
+    <div class="content-holder" *ngFor="let member of infoDisplay.team_members">
+      <img
+        (click)="clickedMember(member)"
+        *ngIf="member.img_url; else useAvatar"
+        src="{{ member.img_url }}"
+        class="avatar"
+      />
+      <ng-template #useAvatar
+        ><img
           (click)="clickedMember(member)"
-          *ngIf="member.img_url; else useAvatar"
-          src="{{ member.img_url }}"
           class="avatar"
+          src="assets/avatar.png"
         />
-        <ng-template #useAvatar
-          ><img
-            (click)="clickedMember(member)"
-            class="avatar"
-            src="assets/avatar.png"
-          />
-        </ng-template>
-        <div class="text-holder">
-          <div class="name">{{ member.fname }} {{ member.lname }}</div>
-          <div class="title">{{ member.title }}</div>
-        </div>
+      </ng-template>
+      <div class="text-holder">
+        <div class="name">{{ member.fname }} {{ member.lname }}</div>
+        <div class="title">{{ member.title }}</div>
       </div>
-    </mat-card-content>
-    <mat-action-row class="info-action-row">
-      <mat-icon
-        matTooltip="Edit {{ infoDisplay.name }}"
-        matTooltipPosition="above"
-        class="edit-button"
-        mat-icon-button
-        >edit</mat-icon
-      >
-      <mat-icon
-        matTooltip="Archive {{ infoDisplay.name }}"
-        matTooltipPosition="above"
-        class="archive-button"
-        mat-icon-button
-        (click)="deleteTeam(infoDisplay.id)"
-        >archive</mat-icon
-      ></mat-action-row
-    >
-  </div>
-
-  <div class="padding-div" *ngIf="selectedMember">
-    <div class="info-holder">
-      <mat-card-content class="mat-card-content">
-        <div class="content-holder-selected">
-          <div class="imgPath">
-            <img
-              *ngIf="selectedMember.img_url; else useAvatar"
-              src="{{ selectedMember.img_url }}"
-              class="member-image"
-            />
-            <ng-template #useAvatar
-              ><img class="member-image" src="assets/avatar.png" />
-            </ng-template>
-          </div>
-          <div class="text-holder">
-            <div class="name">
-              {{ selectedMember.fname }} {{ selectedMember.lname }}
-            </div>
-            <div class="title">{{ selectedMember.title }}</div>
-          </div>
-        </div>
-      </mat-card-content>
     </div>
-    <mat-action-row class="info-action-row">
-      <mat-icon
-        matTooltip="Edit {{ selectedMember.fname }}"
-        matTooltipPosition="above"
-        class="edit-button"
-        mat-icon-button
-        >edit</mat-icon
-      >
-      <mat-icon
-        matTooltip="Archive {{ selectedMember.fname }}"
-        matTooltipPosition="above"
-        class="archive-button"
-        mat-icon-button
-        (click)="deleteTeam(infoDisplay.id)"
-        >archive</mat-icon
-      ></mat-action-row
+  </mat-card-content>
+  <mat-card-actions *ngIf="!selectedMember" class="info-action-row">
+    <mat-icon
+      matTooltip="Edit {{ infoDisplay.name }}"
+      matTooltipPosition="above"
+      class="edit-button"
+      mat-icon-button
+      >edit</mat-icon
     >
-  </div>
+    <mat-icon
+      matTooltip="Archive {{ infoDisplay.name }}"
+      matTooltipPosition="above"
+      class="archive-button"
+      mat-icon-button
+      (click)="deleteTeam(infoDisplay.id)"
+      >archive</mat-icon
+    ></mat-card-actions
+  >
+
+  <mat-card-content *ngIf="selectedMember" class="mat-card-content">
+    <div class="content-holder-selected">
+      <img
+        *ngIf="selectedMember.img_url; else useAvatar"
+        src="{{ selectedMember.img_url }}"
+        class="member-image"
+      />
+      <ng-template #useAvatar
+        ><img class="member-image" src="assets/avatar.png" />
+      </ng-template>
+    </div>
+    <div class="text-holder">
+      <div class="name">
+        {{ selectedMember.fname }} {{ selectedMember.lname }}
+      </div>
+      <div class="title">{{ selectedMember.title }}</div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="selectedMember" class="info-action-row">
+    <mat-icon
+      matTooltip="Edit {{ selectedMember.fname }}"
+      matTooltipPosition="above"
+      class="edit-button"
+      mat-icon-button
+      >edit</mat-icon
+    >
+    <mat-icon
+      matTooltip="Archive {{ selectedMember.fname }}"
+      matTooltipPosition="above"
+      class="archive-button"
+      mat-icon-button
+      (click)="deleteTeam(infoDisplay.id)"
+      >archive</mat-icon
+    ></mat-card-actions
+  >
 </mat-card>
