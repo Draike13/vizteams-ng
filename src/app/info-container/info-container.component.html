@@ -19,34 +19,30 @@
     </div>
   </mat-card-header>
   <div class="padding-div" *ngIf="!selectedMember">
-    <div class="info-holder">
-      <mat-card-content class="mat-card-content">
-        <div
-          class="content-holder"
-          *ngFor="let member of infoDisplay.team_members"
-        >
-          <div class="imgPath">
-            <img
-              (click)="clickedMember(member)"
-              *ngIf="member.img_url; else useAvatar"
-              src="{{ member.img_url }}"
-              class="avatar"
-            />
-            <ng-template #useAvatar
-              ><img
-                (click)="clickedMember(member)"
-                class="avatar"
-                src="assets/avatar.png"
-              />
-            </ng-template>
-          </div>
-          <div class="text-holder">
-            <div class="name">{{ member.fname }} {{ member.lname }}</div>
-            <div class="title">{{ member.title }}</div>
-          </div>
+    <mat-card-content class="mat-card-content">
+      <div
+        class="content-holder"
+        *ngFor="let member of infoDisplay.team_members"
+      >
+        <img
+          (click)="clickedMember(member)"
+          *ngIf="member.img_url; else useAvatar"
+          src="{{ member.img_url }}"
+          class="avatar"
+        />
+        <ng-template #useAvatar
+          ><img
+            (click)="clickedMember(member)"
+            class="avatar"
+            src="assets/avatar.png"
+          />
+        </ng-template>
+        <div class="text-holder">
+          <div class="name">{{ member.fname }} {{ member.lname }}</div>
+          <div class="title">{{ member.title }}</div>
         </div>
-      </mat-card-content>
-    </div>
+      </div>
+    </mat-card-content>
     <mat-action-row class="info-action-row">
       <mat-icon
         matTooltip="Edit {{ infoDisplay.name }}"

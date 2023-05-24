@@ -17,18 +17,12 @@
 }
 .info-card {
   height: 70%; /* Set a fixed height for the card */
-  overflow-y: auto; /* Enable vertical scrolling */
-  position: relative; /* Add position relative to create stacking context */
-  margin-left: 50px;
-  margin-top: 50px;
-  margin-right: 50px;
+  margin: 3rem 3rem 0rem 3rem;
 }
 .default-display {
   display: flex;
   min-height: 70%;
-  margin-left: 50px;
-  margin-top: 50px;
-  margin-right: 50px;
+  margin: 3rem 3rem 0px 3rem;
   align-items: center;
   justify-content: center;
 }
@@ -44,35 +38,32 @@ mat-card {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-left: 16px;
+  margin-left: 1rem;
 }
 .avatar {
   height: 12vh;
   width: 6vw;
-  padding: 8px;
+  padding: 0.5rem;
+  margin-left: 1rem;
 }
 .member-image {
   height: 18vh;
   width: 9vw;
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 .content-holder {
   display: flex;
   width: 45%;
-  justify-content: flex-start;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 .content-holder-selected {
   display: flex;
   width: 90%;
-  justify-content: flex-start;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 .text-holder {
-  padding-bottom: 16px;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -81,9 +72,8 @@ mat-card {
 
 .mat-card-content {
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: auto;
 }
 .name {
   padding-bottom: 4px;
@@ -114,10 +104,6 @@ mat-card {
   justify-content: flex-end;
   background-color: white; /* Add a background color to ensure visibility */
   // z-index: 1;
-}
-
-.info-holder {
-  height: 70%; /*keeps scroll bar from being always active and action row sticky */
 }
 
 .breadcrumb-holder {
