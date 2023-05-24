@@ -32,17 +32,7 @@
 .mat-card-header {
   color: rgb(161, 154, 154);
 }
-mat-card {
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-.imgPath {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: 1rem;
-}
+
 .avatar {
   height: 12vh;
   width: 6vw;
@@ -58,22 +48,30 @@ mat-card {
 .content-holder {
   display: flex;
   width: 45%;
-  flex-wrap: wrap;
 }
 .content-holder-selected {
   display: flex;
-  width: 90%;
-  flex-wrap: wrap;
 }
 .text-holder {
   padding-bottom: 1rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  font-size: x-large;
+}
+.text-holder-selected {
+  padding-bottom: 1rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   font-size: x-large;
 }
 
 .mat-card-content {
+  margin-bottom: 0rem;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
@@ -93,13 +91,14 @@ mat-card {
 }
 .edit-button {
   margin-right: 2rem;
-  padding-right: 32rem;
+  padding-right: 4rem;
   cursor: pointer;
   font-size: xx-large;
 }
 
 .info-action-row {
-  width: 100%;
+  margin: 0rem -1rem;
+  border-top: solid 1px grey;
   display: flex;
   justify-content: flex-end;
 }
