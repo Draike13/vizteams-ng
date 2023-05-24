@@ -64,6 +64,13 @@ mat-card {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.content-holder-selected {
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .text-holder {
   padding-bottom: 16px;
   display: flex;
