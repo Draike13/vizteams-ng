@@ -105,22 +105,19 @@ mat-card {
   font-size: xx-large;
 }
 
-.icon-action-row {
+.info-action-row {
   padding-right: 8px;
-  position: static;
+  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: 95.5%;
   display: flex;
   justify-content: flex-end;
   background-color: white; /* Add a background color to ensure visibility */
-  z-index: 1;
+  // z-index: 1;
 }
 
 .info-holder {
-  min-height: 85%; /*keeps scroll bar from being always active and action row sticky */
-  padding-bottom: 10px;
-  box-sizing: border-box;
+  height: 70%; /*keeps scroll bar from being always active and action row sticky */
 }
 
 .breadcrumb-holder {

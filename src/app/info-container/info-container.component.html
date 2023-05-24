@@ -18,7 +18,7 @@
       >
     </div>
   </mat-card-header>
-  <div *ngIf="!selectedMember">
+  <div class="padding-div" *ngIf="!selectedMember">
     <div class="info-holder">
       <mat-card-content class="mat-card-content">
         <div
@@ -46,11 +46,8 @@
           </div>
         </div>
       </mat-card-content>
-      <div class="infoIcons">
-        <hr />
-      </div>
     </div>
-    <mat-action-row class="icon-action-row">
+    <mat-action-row class="info-action-row">
       <mat-icon
         matTooltip="Edit {{ infoDisplay.name }}"
         matTooltipPosition="above"
@@ -69,7 +66,7 @@
     >
   </div>
 
-  <div *ngIf="selectedMember">
+  <div class="padding-div" *ngIf="selectedMember">
     <div class="info-holder">
       <mat-card-content class="mat-card-content">
         <div class="content-holder-selected">
@@ -91,11 +88,8 @@
           </div>
         </div>
       </mat-card-content>
-      <div class="infoIcons">
-        <hr />
-      </div>
     </div>
-    <mat-action-row class="icon-action-row">
+    <mat-action-row class="info-action-row">
       <mat-icon
         matTooltip="Edit {{ selectedMember.fname }}"
         matTooltipPosition="above"
