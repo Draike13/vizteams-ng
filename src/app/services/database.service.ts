@@ -12,7 +12,6 @@ export class DatabaseService {
   teamUrl = `${this.apiUrl}teams`;
   memberUrl = `${this.apiUrl}team_members`;
   teamList$: Subject<Team[]> = new Subject();
-  infoPanel$: Subject<Team> = new Subject();
 
   constructor(private http: HttpClient) {}
 

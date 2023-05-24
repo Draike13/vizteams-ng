@@ -12,6 +12,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import Swal from 'sweetalert2';
+import { InfoService } from '../services/info.service';
 
 @Component({
   selector: 'app-teamlist',
@@ -29,6 +30,7 @@ export class TeamlistComponent implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
+    private infoService: InfoService,
     public dialog: MatDialog,
     private authService: AuthService
   ) {}
@@ -52,7 +54,8 @@ export class TeamlistComponent implements OnInit {
     });
   }
   displayTeam(team: Team) {
-    this.databaseService.infoPanel$.next(team);
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(team);
     this.teamMembers = team.team_members;
   }
 

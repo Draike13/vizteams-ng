@@ -3,6 +3,7 @@ import { DatabaseService } from '../services/database.service';
 import { TeamMember } from '../models/teamMember.model';
 import { Team } from '../models/team.model';
 import Swal from 'sweetalert2';
+import { InfoService } from '../services/info.service';
 
 @Component({
   selector: 'app-info-container',
@@ -12,10 +13,20 @@ import Swal from 'sweetalert2';
 export class InfoContainerComponent implements OnInit {
   infoDisplay?: Team;
   selectedMember?: TeamMember;
-  constructor(private databaseService: DatabaseService) {}
+  constructor(
+    private databaseService: DatabaseService,
+    private infoService: InfoService
+  ) {
+    this.infoService.infoDisplay$.subscribe((res) => {
+      this.infoDisplay = res;
+    });
+    this.infoService.selectedMember$.subscribe((res) => {
+      this.selectedMember = res;
+    });
+  }
 
   ngOnInit(): void {
-    this.databaseService.infoPanel$.subscribe((res) => {
+    this.infoService.infoDisplay$.subscribe((res) => {
       this.infoDisplay = res;
     });
   }
@@ -30,19 +41,17 @@ export class InfoContainerComponent implements OnInit {
     }).then((result) => {
       console.log('TEAM TO DELTE', team_id);
       if (result.isConfirmed === true) {
-        this.databaseService.deleteTeam(team_id).subscribe((res) => {
+        this.databaseService.deleteTeam(team_id).subscribe(() => {
           this.databaseService.updateTeams();
         });
       }
-      this.infoDisplay = undefined;
+      this.infoService.infoDisplay$.next(undefined);
     });
   }
   clickedMember(member) {
-    this.selectedMember = member;
-    console.log(this.selectedMember);
+    this.infoService.selectedMember$.next(member);
   }
   clickedTeam() {
-    this.selectedMember = undefined;
-    console.log(this.selectedMember);
+    this.infoService.selectedMember$.next(undefined);
   }
 }
