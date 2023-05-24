@@ -1,6 +1,13 @@
 .team-title {
   font-size: xx-large;
-  padding: 16px;
+  padding-top: 8px;
+  padding-right: 8px;
+  cursor: pointer;
+}
+.member-title {
+  font-size: xx-large;
+  padding-top: 8px;
+  padding-right: 8px;
 }
 
 .empty-card-text {
@@ -44,6 +51,11 @@ mat-card {
   width: 6vw;
   padding: 8px;
 }
+.member-image {
+  height: 18vh;
+  width: 9vw;
+  padding: 8px;
+}
 
 .content-holder {
   display: flex;
@@ -79,10 +91,16 @@ mat-card {
   cursor: pointer;
   font-size: xx-large;
 }
+.edit-button {
+  margin-right: 32px;
+  padding-right: 32px;
+  cursor: pointer;
+  font-size: xx-large;
+}
 
 .icon-action-row {
   padding-right: 8px;
-  position: sticky;
+  position: static;
   bottom: 0;
   left: 0;
   right: 0;
@@ -96,4 +114,10 @@ mat-card {
   min-height: 85%; /*keeps scroll bar from being always active and action row sticky */
   padding-bottom: 10px;
   box-sizing: border-box;
+}
+
+.breadcrumb-holder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

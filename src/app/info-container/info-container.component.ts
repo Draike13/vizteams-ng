@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class InfoContainerComponent implements OnInit {
   infoDisplay?: Team;
+  selectedMember?: TeamMember;
   constructor(private databaseService: DatabaseService) {}
 
   ngOnInit(): void {
@@ -35,5 +36,13 @@ export class InfoContainerComponent implements OnInit {
       }
       this.infoDisplay = undefined;
     });
+  }
+  clickedMember(member) {
+    this.selectedMember = member;
+    console.log(this.selectedMember);
+  }
+  clickedTeam() {
+    this.selectedMember = undefined;
+    console.log(this.selectedMember);
   }
 }
