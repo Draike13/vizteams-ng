@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class DatabaseService {
   apiUrl = environment.apiUrl;
-  teamUrl = `${this.apiUrl}teams`;
-  memberUrl = `${this.apiUrl}team_members`;
+  teamUrl = `${this.apiUrl}teams/`;
+  memberUrl = `${this.apiUrl}team_members/`;
   teamList$: Subject<Team[]> = new Subject();
 
   constructor(private http: HttpClient) {}
@@ -38,7 +38,11 @@ export class DatabaseService {
   deleteTeam(team_id) {
     console.log('TEAMID:', team_id);
     console.log(this.teamUrl + '/');
-    return this.http.delete<Team[]>(this.teamUrl + '/' + team_id);
+    return this.http.delete<Team[]>(this.teamUrl + team_id);
+  }
+
+  deleteMember(member) {
+    return this.http.delete<TeamMember>(this.memberUrl + member.id);
   }
 
   newTeamMember(newTeamMember) {

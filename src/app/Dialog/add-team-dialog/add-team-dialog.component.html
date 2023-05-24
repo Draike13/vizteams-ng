@@ -21,6 +21,9 @@
   </mat-form-field>
 </p>
 <div class="modal-buttons">
+  <button mat-button class="cancelbutton" [mat-dialog-close]="true">
+    Cancel
+  </button>
   <button
     mat-button
     (click)="createTeam()"
@@ -29,8 +32,5 @@
     type="submit"
   >
     Submit
-  </button>
-  <button mat-button class="cancelbutton" [mat-dialog-close]="true">
-    Cancel
   </button>
 </div>

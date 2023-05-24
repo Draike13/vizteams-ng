@@ -48,6 +48,25 @@ export class InfoContainerComponent implements OnInit {
       this.infoService.infoDisplay$.next(undefined);
     });
   }
+
+  deleteMember(member) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure you want to remove this Team?',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonColor: 'red',
+    }).then((result) => {
+      console.log('MEMBER TO DELTE');
+      if (result.isConfirmed === true) {
+        this.databaseService.deleteMember(member).subscribe(() => {
+          this.databaseService.updateTeams();
+        });
+      }
+      this.infoService.infoDisplay$.next(undefined);
+    });
+  }
+
   clickedMember(member) {
     this.infoService.selectedMember$.next(member);
   }
