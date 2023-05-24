@@ -42,6 +42,7 @@
   <mat-card-actions *ngIf="!selectedMember" class="info-action-row">
     <mat-icon
       matTooltip="Edit {{ infoDisplay.name }}"
+      (click)="editTeam(infoDisplay)"
       matTooltipPosition="above"
       class="edit-button"
       mat-icon-button

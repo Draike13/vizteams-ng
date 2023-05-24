@@ -29,6 +29,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AuthInterceptor } from './auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SignInFormComponent,
     AddMemberDialogComponent,
     AddTeamDialogComponent,
+    EditTeamDialogComponent,
   ],
   imports: [
     BrowserModule,

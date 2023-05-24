@@ -32,13 +32,18 @@ export class DatabaseService {
   }
 
   createTeam(newTeam: any) {
-    return this.http.post<Team[]>(this.teamUrl, newTeam);
+    return this.http.post<Team>(this.teamUrl, newTeam);
+  }
+  editTeam(team: any, team_id: number) {
+    console.log(team);
+    console.log(team_id);
+    return this.http.put<Team>(this.teamUrl + team_id, team);
   }
 
   deleteTeam(team_id) {
     console.log('TEAMID:', team_id);
     console.log(this.teamUrl + '/');
-    return this.http.delete<Team[]>(this.teamUrl + team_id);
+    return this.http.delete<Team>(this.teamUrl + team_id);
   }
 
   deleteMember(member) {

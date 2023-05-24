@@ -4,6 +4,9 @@ import { TeamMember } from '../models/teamMember.model';
 import { Team } from '../models/team.model';
 import Swal from 'sweetalert2';
 import { InfoService } from '../services/info.service';
+import { MatDialog } from '@angular/material/dialog';
+
+import { EditTeamDialogComponent } from '../Dialog/edit-team-dialog/edit-team-dialog.component';
 
 @Component({
   selector: 'app-info-container',
@@ -15,7 +18,8 @@ export class InfoContainerComponent implements OnInit {
   selectedMember?: TeamMember;
   constructor(
     private databaseService: DatabaseService,
-    private infoService: InfoService
+    private infoService: InfoService,
+    public dialog:MatDialog
   ) {
     this.infoService.infoDisplay$.subscribe((res) => {
       this.infoDisplay = res;
@@ -72,5 +76,12 @@ export class InfoContainerComponent implements OnInit {
   }
   clickedTeam() {
     this.infoService.selectedMember$.next(undefined);
+  }
+  editTeam(team) {
+    this.dialog.open(EditTeamDialogComponent, {
+    data: team,
+    minHeight: '30vh',
+    minWidth: '40vw',
+  });;
   }
 }
