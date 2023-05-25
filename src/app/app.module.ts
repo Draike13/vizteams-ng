@@ -33,6 +33,7 @@ import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dia
 import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-member-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { SortPipe } from './sort.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AddTeamDialogComponent,
     EditTeamDialogComponent,
     EditMemberDialogComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,
