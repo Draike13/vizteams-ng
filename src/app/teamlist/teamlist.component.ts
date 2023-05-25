@@ -37,7 +37,6 @@ export class TeamlistComponent implements OnInit {
 
   togglePanel() {
     this.toggle = !this.toggle;
-    console.log(this.toggle);
   }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
