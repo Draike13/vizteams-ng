@@ -83,6 +83,7 @@ export class InfoContainerComponent implements OnInit {
       minHeight: '30vh',
       minWidth: '40vw',
     });
+
     this.reset();
   }
   editMember(member: TeamMember, team: Team) {

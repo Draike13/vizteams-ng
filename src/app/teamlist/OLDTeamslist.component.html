@@ -1,11 +1,6 @@
 <mat-card class="team-card">
   <mat-card-header>
-    <mat-card-title
-      matTooltip="Open/Close All"
-      matTooltipPosition="above"
-      (click)="togglePanel()"
-      class="team-title"
-    >
+    <mat-card-title (click)="togglePanel()" class="team-title">
       Teams
     </mat-card-title>
   </mat-card-header>
@@ -23,6 +18,10 @@
           (click)="displayTeam(team)"
           [expanded]="toggle"
           *ngFor="let team of teamsList"
+          id="{{ team.id }}"
+          cdkDropList
+          [cdkDropListData]="teamsList"
+          [cdkDropListConnectedTo]="connectedTo"
           class="team-expansion-panel"
         >
           <mat-expansion-panel-header>
@@ -34,11 +33,8 @@
           <div
             class="imgPath"
             cdkDropList
-            id="{{ team.name }}"
-            [cdkDropListData]="team.team_members"
-            [cdkDropListConnectedTo]="connectedTo"
             cdkDropListOrientation="horizontal"
-            (cdkDropListDropped)="drop($event, team.id)"
+            (cdkDropListDropped)="drop($event)"
           >
             <div
               class="image"
@@ -52,7 +48,7 @@
                 matTooltip="{{ teamMember.lname }}, {{ teamMember.fname }}"
                 [matTooltipClass]="'teammembertooltip'"
                 [matTooltipPosition]="'above'"
-              />&nbsp;
+              />
               <ng-template #useAvatar
                 ><img
                   class="avatar"
@@ -60,10 +56,9 @@
                   matTooltip="{{ teamMember.lname }}, {{ teamMember.fname }}"
                   [matTooltipClass]="'teammembertooltip'"
                   [matTooltipPosition]="'above'"
-                />&nbsp;
+                />
               </ng-template>
             </div>
-            <br />
           </div>
           <p style="text-align: center" *ngIf="team.team_members?.length < 1">
             No members on this team.
