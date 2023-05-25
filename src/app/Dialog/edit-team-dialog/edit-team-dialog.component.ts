@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -16,8 +16,24 @@ export class EditTeamDialogComponent implements OnInit {
     private databaseService: DatabaseService
   ) {
     console.log(this.data);
-    this.nameControl = new FormControl();
-    this.descControl = new FormControl();
+    this.nameControl = new FormControl(this.data.name, Validators.required);
+    this.descControl = new FormControl(
+      this.data.description,
+      Validators.required
+    );
+  }
+
+  getNameErrorMessage() {
+    if (this.nameControl.hasError('required')) {
+      return 'Team name required';
+    }
+    return ''; // Default return value when the condition is false
+  }
+  getDescErrorMessage() {
+    if (this.descControl.hasError('required')) {
+      return 'Please describe the team';
+    }
+    return ''; // Default return value when the condition is false
   }
 
   editTeam() {
@@ -31,8 +47,5 @@ export class EditTeamDialogComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.nameControl.setValue(this.data.name);
-    this.descControl.setValue(this.data.description);
-  }
+  ngOnInit(): void {}
 }

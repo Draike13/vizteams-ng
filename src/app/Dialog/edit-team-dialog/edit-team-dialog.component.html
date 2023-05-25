@@ -2,12 +2,18 @@
   <mat-form-field>
     <mat-label>team name:</mat-label>
     <input matInput [formControl]="nameControl" required />
+    <mat-error *ngIf="nameControl.invalid">{{
+      getNameErrorMessage()
+    }}</mat-error>
   </mat-form-field>
 </p>
 <p>
   <mat-form-field>
     <mat-label>Team Description:</mat-label>
     <textarea matInput [formControl]="descControl" required></textarea>
+    <mat-error *ngIf="descControl.invalid">{{
+      getDescErrorMessage()
+    }}</mat-error>
   </mat-form-field>
 </p>
 <div class="modal-buttons">
