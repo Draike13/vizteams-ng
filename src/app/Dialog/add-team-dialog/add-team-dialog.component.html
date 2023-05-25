@@ -7,6 +7,9 @@
       required
       placeholder="Team Name"
     />
+    <mat-error *ngIf="nameControl.invalid">{{
+      getNameErrorMessage()
+    }}</mat-error>
   </mat-form-field>
 </p>
 <p>
@@ -18,6 +21,9 @@
       required
       placeholder="Please describe the team"
     ></textarea>
+    <mat-error *ngIf="descControl.invalid">{{
+      getDescErrorMessage()
+    }}</mat-error>
   </mat-form-field>
 </p>
 <div class="modal-buttons">
