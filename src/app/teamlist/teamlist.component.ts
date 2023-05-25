@@ -50,7 +50,6 @@ export class TeamlistComponent implements OnInit {
 
   togglePanel() {
     this.toggle = !this.toggle;
-    console.log(this.toggle);
   }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
@@ -60,13 +59,17 @@ export class TeamlistComponent implements OnInit {
       data: { teamsList, selectedTeam },
     });
   }
+
   addTeam() {
     this.dialog.open(AddTeamDialogComponent, {
       minHeight: '30vh',
       minWidth: '40vw',
     });
     this.populateConnectedTo();
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(undefined);
   }
+
   displayTeam(team: Team) {
     this.infoService.selectedMember$.next(undefined);
     this.infoService.infoDisplay$.next(team);

@@ -31,10 +31,6 @@ export class EditTeamDialogComponent implements OnInit {
     });
   }
 
-  // editTeam(selectedTeam) {
-
-  // }
-
   ngOnInit(): void {
     this.nameControl.setValue(this.data.name);
     this.descControl.setValue(this.data.description);

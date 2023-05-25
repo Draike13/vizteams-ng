@@ -16,7 +16,7 @@
   font-weight: 500;
 }
 .info-card {
-  height: 70%; /* Set a fixed height for the card */
+  height: 80%; /* Set a fixed height for the card */
   margin: 3rem 3rem 0rem 3rem;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 }
 .default-display {
   display: flex;
-  min-height: 70%;
+  min-height: 80%;
   margin: 3rem 3rem 0px 3rem;
   align-items: center;
   justify-content: center;
@@ -96,6 +96,12 @@
   cursor: pointer;
   font-size: xx-large;
 }
+.snav-button {
+  margin-right: 1rem;
+  padding-right: 34rem;
+  cursor: pointer;
+  font-size: xx-large;
+}
 
 .info-action-row {
   margin: 0rem -1rem;
@@ -108,4 +114,22 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.side-container {
+  width: 100%;
+  height: 100%;
+}
+
+mat-drawer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background-color: white;
+}
+
+.side-drawer {
+  padding: 1rem;
+  width: 18rem;
+  font-size: x-large;
 }

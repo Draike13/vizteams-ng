@@ -7,6 +7,7 @@ import { InfoService } from '../services/info.service';
 import { MatDialog } from '@angular/material/dialog';
 
 import { EditTeamDialogComponent } from '../Dialog/edit-team-dialog/edit-team-dialog.component';
+import { EditMemberDialogComponent } from '../Dialog/edit-member-dialog/edit-member-dialog.component';
 
 @Component({
   selector: 'app-info-container',
@@ -16,6 +17,7 @@ import { EditTeamDialogComponent } from '../Dialog/edit-team-dialog/edit-team-di
 export class InfoContainerComponent implements OnInit {
   infoDisplay?: Team;
   selectedMember?: TeamMember;
+  opened: boolean;
   constructor(
     private databaseService: DatabaseService,
     private infoService: InfoService,
@@ -55,12 +57,11 @@ export class InfoContainerComponent implements OnInit {
   deleteMember(member) {
     Swal.fire({
       icon: 'warning',
-      title: 'Are you sure you want to remove this Team?',
+      title: 'Are you sure you want to remove this Member?',
       showCancelButton: true,
       showConfirmButton: true,
       confirmButtonColor: 'red',
     }).then((result) => {
-      console.log('MEMBER TO DELTE');
       if (result.isConfirmed === true) {
         this.databaseService.deleteMember(member).subscribe(() => {
           this.databaseService.updateTeams();
@@ -82,5 +83,19 @@ export class InfoContainerComponent implements OnInit {
       minHeight: '30vh',
       minWidth: '40vw',
     });
+
+    this.reset();
+  }
+  editMember(member: TeamMember, team: Team) {
+    this.dialog.open(EditMemberDialogComponent, {
+      data: [member, team],
+      minHeight: '20vh',
+      minWidth: '30vw',
+    });
+    this.reset();
+  }
+  reset() {
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(undefined);
   }
 }

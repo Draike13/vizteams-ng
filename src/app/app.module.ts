@@ -30,6 +30,9 @@ import { AuthInterceptor } from './auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dialog.component';
+import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-member-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dia
     AddMemberDialogComponent,
     AddTeamDialogComponent,
     EditTeamDialogComponent,
+    EditMemberDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,8 @@ import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dia
     MatProgressBarModule,
     DragDropModule,
     MatPaginatorModule,
+    MatMenuModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

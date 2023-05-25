@@ -1,6 +1,11 @@
 <mat-card class="team-card">
   <mat-card-header>
-    <mat-card-title (click)="togglePanel()" class="team-title">
+    <mat-card-title
+      matTooltip="Open/Close All"
+      matTooltipPosition="above"
+      (click)="togglePanel()"
+      class="team-title"
+    >
       Teams
     </mat-card-title>
   </mat-card-header>
