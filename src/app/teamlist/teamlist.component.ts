@@ -1,4 +1,10 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
@@ -11,9 +17,6 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { CdkDragMove } from '@angular/cdk/drag-drop';
-import { MatExpansionPanel } from '@angular/material/expansion';
-import { CdkDragEnter } from '@angular/cdk/drag-drop';
 
 import { InfoService } from '../services/info.service';
 import { HttpClient } from '@angular/common/http';
@@ -32,8 +35,6 @@ export class TeamlistComponent implements OnInit {
   isLoading: boolean = false;
   currentUser: any;
   connectedTo = [];
-  @ViewChildren(MatExpansionPanel) panels: QueryList<MatExpansionPanel>;
-  draggedElement: HTMLElement; // Declare a reference to the dragged element
 
   constructor(
     private databaseService: DatabaseService,
@@ -42,24 +43,6 @@ export class TeamlistComponent implements OnInit {
     private authService: AuthService,
     private http: HttpClient
   ) {}
-
-  cdkDragMove(event: Event): void {
-    const cdkDragMoveEvent = event as unknown as CdkDragMove<HTMLElement>;
-    this.draggedElement = cdkDragMoveEvent.source.element.nativeElement;
-  }
-
-  cdkDropListEntered(event: Event): void {
-    console.log('ZONE ENTERED', event);
-    const cdkDropListEnteredEvent =
-      event as unknown as CdkDragEnter<HTMLElement>;
-    const isAccordionClosed = this.panels
-      .toArray()
-      .every((panel) => !panel.expanded);
-
-    if (isAccordionClosed) {
-      this.panels.forEach((panel) => panel.open());
-    }
-  }
 
   populateConnectedTo() {
     this.connectedTo = [];
