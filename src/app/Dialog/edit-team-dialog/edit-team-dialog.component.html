@@ -26,6 +26,10 @@
     [mat-dialog-close]="true"
     class="submitbutton"
     type="submit"
+    [disabled]="
+      this.nameControl.hasError('required') ||
+      this.descControl.hasError('required')
+    "
   >
     Submit
   </button>

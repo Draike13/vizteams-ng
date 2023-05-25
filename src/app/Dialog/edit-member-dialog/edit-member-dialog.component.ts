@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
@@ -31,10 +31,10 @@ export class EditMemberDialogComponent implements OnInit {
     private databaseService: DatabaseService,
     private http: HttpClient
   ) {
-    this.fnameControl = new FormControl();
-    this.lnameControl = new FormControl();
-    this.titleControl = new FormControl();
-    this.teamControl = new FormControl();
+    this.fnameControl = new FormControl(this.data[0].fname, Validators.required);
+    this.lnameControl = new FormControl(this.data[0].lname, Validators.required);
+    this.titleControl = new FormControl(this.data[0].title, Validators.required);
+    this.teamControl = new FormControl(this.data[0].team_id, Validators.required);
   }
 
   editMember() {
@@ -54,10 +54,6 @@ export class EditMemberDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.picsumAvatar();
-    this.fnameControl.setValue(this.data[0].fname);
-    this.lnameControl.setValue(this.data[0].lname);
-    this.titleControl.setValue(this.data[0].title);
-    this.teamControl.setValue(this.data[0].team_id);
   }
 
   focusImage(selectedPic) {
@@ -75,5 +71,30 @@ export class EditMemberDialogComponent implements OnInit {
       .subscribe((res: any) => {
         this.picsum = res;
       });
+  }
+
+  getfnameErrorMessage() {
+    if (this.fnameControl.hasError('required')) {
+      return 'First name required';
+    }
+    return ''; // Default return value when the condition is false
+  }
+  getlnameErrorMessage() {
+    if (this.lnameControl.hasError('required')) {
+      return 'Last name required';
+    }
+    return ''; // Default return value when the condition is false
+  }
+  gettitleErrorMessage() {
+    if (this.titleControl.hasError('required')) {
+      return 'Title required';
+    }
+    return ''; // Default return value when the condition is false
+  }
+  getteamidErrorMessage() {
+    if (this.teamControl.hasError('required')) {
+      return 'Team required';
+    }
+    return ''; // Default return value when the condition is false
   }
 }

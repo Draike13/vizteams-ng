@@ -69,6 +69,12 @@
       (click)="addMember()"
       class="submit-button"
       mat-button
+      [disabled]="
+        this.fnameControl.hasError('required') ||
+        this.lnameControl.hasError('required') ||
+        this.titleControl.hasError('required') ||
+        this.teamControl.hasError('required')
+      "
     >
       Submit
     </button>

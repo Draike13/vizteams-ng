@@ -22,11 +22,17 @@
     <mat-form-field class="first-name">
       <mat-label>First Name</mat-label>
       <input [formControl]="fnameControl" matInput />
+      <mat-error *ngIf="fnameControl.invalid">{{
+        getfnameErrorMessage()
+      }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="last-name">
       <mat-label>Last Name</mat-label>
       <input [formControl]="lnameControl" matInput />
+      <mat-error *ngIf="fnameControl.invalid">{{
+        getfnameErrorMessage()
+      }}</mat-error>
     </mat-form-field>
   </div>
   <div class="select-holder">
@@ -37,6 +43,9 @@
         <mat-option value="Developer">Developer</mat-option>
         <mat-option value="Litteral Trash">Literal Trash</mat-option>
       </mat-select>
+      <mat-error *ngIf="titleControl.invalid">{{
+        gettitleErrorMessage()
+      }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="team">
@@ -46,6 +55,9 @@
           {{ this.data[1].name }}</mat-option
         >
       </mat-select>
+      <mat-error *ngIf="teamControl.invalid">{{
+        getteamidErrorMessage()
+      }}</mat-error>
     </mat-form-field>
   </div>
   <div class="button-holder">
@@ -57,6 +69,12 @@
       (click)="editMember()"
       class="submit-button"
       mat-button
+      [disabled]="
+        this.fnameControl.hasError('required') ||
+        this.lnameControl.hasError('required') ||
+        this.titleControl.hasError('required') ||
+        this.teamControl.hasError('required')
+      "
     >
       Submit
     </button>
