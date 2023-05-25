@@ -42,6 +42,25 @@ export class DatabaseService {
           },
         });
     }
+    this.updateDNDMemberDisplayOrder(data);
+  }
+
+  updateDNDMemberDisplayOrder(data) {
+    // Make an HTTP request to update the TeamMember table
+    data.forEach((member, index) => {
+      console.log(index);
+      member.display_order = index + 1;
+      this.http
+        .put<TeamMember[]>(this.memberUrl + member.id, member)
+        .subscribe({
+          next: (updatedTeamMember) => {
+            console.log('TeamMember updated successfully.', updatedTeamMember);
+          },
+          error: (error) => {
+            console.error('Failed to update TeamMember.', error);
+          },
+        });
+    });
   }
 
   getTeamsList() {

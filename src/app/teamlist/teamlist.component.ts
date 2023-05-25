@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
@@ -11,9 +11,13 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import Swal from 'sweetalert2';
+import { CdkDragMove } from '@angular/cdk/drag-drop';
+import { MatExpansionPanel } from '@angular/material/expansion';
+import { CdkDragEnter } from '@angular/cdk/drag-drop';
+
 import { InfoService } from '../services/info.service';
 import { HttpClient } from '@angular/common/http';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-teamlist',
@@ -28,6 +32,8 @@ export class TeamlistComponent implements OnInit {
   isLoading: boolean = false;
   currentUser: any;
   connectedTo = [];
+  @ViewChildren(MatExpansionPanel) panels: QueryList<MatExpansionPanel>;
+  draggedElement: HTMLElement; // Declare a reference to the dragged element
 
   constructor(
     private databaseService: DatabaseService,
@@ -37,6 +43,24 @@ export class TeamlistComponent implements OnInit {
     private http: HttpClient
   ) {}
 
+  cdkDragMove(event: Event): void {
+    const cdkDragMoveEvent = event as unknown as CdkDragMove<HTMLElement>;
+    this.draggedElement = cdkDragMoveEvent.source.element.nativeElement;
+  }
+
+  cdkDropListEntered(event: Event): void {
+    console.log('ZONE ENTERED', event);
+    const cdkDropListEnteredEvent =
+      event as unknown as CdkDragEnter<HTMLElement>;
+    const isAccordionClosed = this.panels
+      .toArray()
+      .every((panel) => !panel.expanded);
+
+    if (isAccordionClosed) {
+      this.panels.forEach((panel) => panel.open());
+    }
+  }
+
   populateConnectedTo() {
     this.connectedTo = [];
     this.databaseService.teamList$.subscribe((value) => {
@@ -45,7 +69,6 @@ export class TeamlistComponent implements OnInit {
         this.connectedTo.push(team.name);
       }
     });
-    console.log('connectedTo: ', this.connectedTo);
   }
 
   togglePanel() {
@@ -74,7 +97,6 @@ export class TeamlistComponent implements OnInit {
     this.infoService.selectedMember$.next(undefined);
     this.infoService.infoDisplay$.next(team);
     this.teamMembers = team.team_members;
-    console.log('CT', this.connectedTo);
   }
 
   ngOnInit(): void {
@@ -115,7 +137,7 @@ export class TeamlistComponent implements OnInit {
         event.currentIndex
       );
       const teamMemberdata = event.container.data;
-      this.databaseService.updateDNDMember(teamMemberdata, newID);
+      this.databaseService.updateDNDMemberDisplayOrder(teamMemberdata);
     } else {
       console.log('EVENT', event);
       transferArrayItem(
