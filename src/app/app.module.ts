@@ -31,6 +31,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dialog.component';
 import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-member-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-memb
     MatProgressBarModule,
     DragDropModule,
     MatPaginatorModule,
+    MatMenuModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

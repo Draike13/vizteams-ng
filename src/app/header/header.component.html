@@ -8,10 +8,22 @@
       (click)="showProfile()"
     >
       {{ currentUser }}
-      <span *ngIf="currentUser" class="logout" (click)="logout()"
-        >(Logout)</span
-      ></span
-    ><br />
+
+      <button
+        *ngIf="currentUser"
+        class="menu"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="logout()" mat-menu-item>
+          <mat-icon class="icon">subdirectory_arrow_left</mat-icon>
+          <span class="icon">logout</span>
+        </button>
+      </mat-menu>
+    </span>
 
     <ng-template #loggedOut>
       <span class="useroremail" (click)="signUpIn()">Sign In</span>

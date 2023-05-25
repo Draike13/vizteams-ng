@@ -15,6 +15,7 @@
 }
 
 .add-team {
+  margin-right: 1rem;
   font-size: x-large;
   color: rgba(69, 90, 100, 0.87);
   cursor: pointer;
@@ -104,7 +105,6 @@
   padding-right: 8px;
 }
 
-
 .dragdrop-list {
   width: 80vw !important;
   min-height: 30px;
@@ -118,8 +118,8 @@
 
 .dragdrop-box {
   border-radius: 10px;
-  box-shadow: 5px 5px 6px #EBF2F5;
-  border: solid 2px #EBF2F5;
+  box-shadow: 5px 5px 6px #ebf2f5;
+  border: solid 2px #ebf2f5;
   transition: all ease 0.4s;
   cursor: auto;
   padding: 25px 30px 25px !important;
