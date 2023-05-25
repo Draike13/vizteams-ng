@@ -32,6 +32,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dialog.component';
 import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-member-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MatMenuModule } from '@angular/material/menu';
     DragDropModule,
     MatPaginatorModule,
     MatMenuModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

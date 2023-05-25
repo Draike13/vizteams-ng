@@ -17,6 +17,7 @@ import { EditMemberDialogComponent } from '../Dialog/edit-member-dialog/edit-mem
 export class InfoContainerComponent implements OnInit {
   infoDisplay?: Team;
   selectedMember?: TeamMember;
+  opened: boolean;
   constructor(
     private databaseService: DatabaseService,
     private infoService: InfoService,
