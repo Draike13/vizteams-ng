@@ -18,10 +18,6 @@
           (click)="displayTeam(team)"
           [expanded]="toggle"
           *ngFor="let team of teamsList"
-          id="{{ team.id }}"
-          cdkDropList
-          [cdkDropListData]="teamsList"
-          [cdkDropListConnectedTo]="connectedTo"
           class="team-expansion-panel"
         >
           <mat-expansion-panel-header>
@@ -37,7 +33,7 @@
             [cdkDropListData]="team.team_members"
             [cdkDropListConnectedTo]="connectedTo"
             cdkDropListOrientation="horizontal"
-            (cdkDropListDropped)="drop($event)"
+            (cdkDropListDropped)="drop($event, team.id)"
           >
             <div
               class="image"

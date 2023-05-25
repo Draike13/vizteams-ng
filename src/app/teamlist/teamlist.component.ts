@@ -13,6 +13,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import Swal from 'sweetalert2';
 import { InfoService } from '../services/info.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-teamlist',
@@ -32,7 +33,8 @@ export class TeamlistComponent implements OnInit {
     private databaseService: DatabaseService,
     private infoService: InfoService,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) {}
 
   populateConnectedTo() {
@@ -101,7 +103,7 @@ export class TeamlistComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<any>) {
+  drop(event: CdkDragDrop<any>, newID: number) {
     console.log('EVENT', event);
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -109,6 +111,9 @@ export class TeamlistComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      const teamMemberdata = event.container.data;
+      console.log('TD', teamMemberdata);
+      this.databaseService.updateDNDMember(teamMemberdata, newID);
     } else {
       console.log('EVENT', event);
       transferArrayItem(
@@ -117,6 +122,9 @@ export class TeamlistComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      const teamMemberdata = event.container.data;
+      console.log('TD', teamMemberdata);
+      this.databaseService.updateDNDMember(teamMemberdata, newID);
     }
   }
 }

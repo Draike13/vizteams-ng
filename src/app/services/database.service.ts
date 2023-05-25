@@ -27,6 +27,23 @@ export class DatabaseService {
     });
   }
 
+  updateDNDMember(data, newID) {
+    // Make an HTTP request to update the TeamMember table
+    for (let member of data) {
+      member.team_id = newID;
+      this.http
+        .put<TeamMember[]>(this.memberUrl + member.id, member)
+        .subscribe({
+          next: (updatedTeamMember) => {
+            console.log('TeamMember updated successfully.', updatedTeamMember);
+          },
+          error: (error) => {
+            console.error('Failed to update TeamMember.', error);
+          },
+        });
+    }
+  }
+
   getTeamsList() {
     return this.http.get(this.teamUrl);
   }

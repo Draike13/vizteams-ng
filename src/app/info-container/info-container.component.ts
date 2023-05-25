@@ -19,7 +19,7 @@ export class InfoContainerComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private infoService: InfoService,
-    public dialog:MatDialog
+    public dialog: MatDialog
   ) {
     this.infoService.infoDisplay$.subscribe((res) => {
       this.infoDisplay = res;
@@ -43,7 +43,6 @@ export class InfoContainerComponent implements OnInit {
       showConfirmButton: true,
       confirmButtonColor: 'red',
     }).then((result) => {
-      console.log('TEAM TO DELTE', team_id);
       if (result.isConfirmed === true) {
         this.databaseService.deleteTeam(team_id).subscribe(() => {
           this.databaseService.updateTeams();
@@ -79,9 +78,9 @@ export class InfoContainerComponent implements OnInit {
   }
   editTeam(team) {
     this.dialog.open(EditTeamDialogComponent, {
-    data: team,
-    minHeight: '30vh',
-    minWidth: '40vw',
-  });;
+      data: team,
+      minHeight: '30vh',
+      minWidth: '40vw',
+    });
   }
 }
