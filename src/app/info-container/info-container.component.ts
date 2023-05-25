@@ -7,6 +7,7 @@ import { InfoService } from '../services/info.service';
 import { MatDialog } from '@angular/material/dialog';
 
 import { EditTeamDialogComponent } from '../Dialog/edit-team-dialog/edit-team-dialog.component';
+import { EditMemberDialogComponent } from '../Dialog/edit-member-dialog/edit-member-dialog.component';
 
 @Component({
   selector: 'app-info-container',
@@ -19,7 +20,7 @@ export class InfoContainerComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private infoService: InfoService,
-    public dialog:MatDialog
+    public dialog: MatDialog
   ) {
     this.infoService.infoDisplay$.subscribe((res) => {
       this.infoDisplay = res;
@@ -43,7 +44,6 @@ export class InfoContainerComponent implements OnInit {
       showConfirmButton: true,
       confirmButtonColor: 'red',
     }).then((result) => {
-      console.log('TEAM TO DELTE', team_id);
       if (result.isConfirmed === true) {
         this.databaseService.deleteTeam(team_id).subscribe(() => {
           this.databaseService.updateTeams();
@@ -56,12 +56,11 @@ export class InfoContainerComponent implements OnInit {
   deleteMember(member) {
     Swal.fire({
       icon: 'warning',
-      title: 'Are you sure you want to remove this Team?',
+      title: 'Are you sure you want to remove this Member?',
       showCancelButton: true,
       showConfirmButton: true,
       confirmButtonColor: 'red',
     }).then((result) => {
-      console.log('MEMBER TO DELTE');
       if (result.isConfirmed === true) {
         this.databaseService.deleteMember(member).subscribe(() => {
           this.databaseService.updateTeams();
@@ -79,9 +78,22 @@ export class InfoContainerComponent implements OnInit {
   }
   editTeam(team) {
     this.dialog.open(EditTeamDialogComponent, {
-    data: team,
-    minHeight: '30vh',
-    minWidth: '40vw',
-  });;
+      data: team,
+      minHeight: '30vh',
+      minWidth: '40vw',
+    });
+    this.reset();
+  }
+  editMember(member: TeamMember, team: Team) {
+    this.dialog.open(EditMemberDialogComponent, {
+      data: [member, team],
+      minHeight: '20vh',
+      minWidth: '30vw',
+    });
+    this.reset();
+  }
+  reset() {
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(undefined);
   }
 }

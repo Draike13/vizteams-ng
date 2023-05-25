@@ -47,12 +47,16 @@ export class TeamlistComponent implements OnInit {
       data: { teamsList, selectedTeam },
     });
   }
+
   addTeam() {
     this.dialog.open(AddTeamDialogComponent, {
       minHeight: '30vh',
       minWidth: '40vw',
     });
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(undefined);
   }
+
   displayTeam(team: Team) {
     this.infoService.selectedMember$.next(undefined);
     this.infoService.infoDisplay$.next(team);
@@ -88,7 +92,6 @@ export class TeamlistComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log('EVENT: ', event);
     moveItemInArray(this.teamMembers, event.previousIndex, event.currentIndex);
   }
 }

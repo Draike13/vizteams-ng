@@ -30,6 +30,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dialog.component';
+import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dia
     AddMemberDialogComponent,
     AddTeamDialogComponent,
     EditTeamDialogComponent,
+    EditMemberDialogComponent,
   ],
   imports: [
     BrowserModule,

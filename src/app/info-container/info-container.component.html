@@ -80,6 +80,7 @@
     <mat-icon
       matTooltip="Edit {{ selectedMember.fname }}"
       matTooltipPosition="above"
+      (click)="editMember(selectedMember, infoDisplay)"
       class="edit-button"
       mat-icon-button
       >edit</mat-icon

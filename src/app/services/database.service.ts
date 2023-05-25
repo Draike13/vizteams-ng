@@ -35,14 +35,13 @@ export class DatabaseService {
     return this.http.post<Team>(this.teamUrl, newTeam);
   }
   editTeam(team: any, team_id: number) {
-    console.log(team);
-    console.log(team_id);
     return this.http.put<Team>(this.teamUrl + team_id, team);
+  }
+  editMember(member: TeamMember, member_id: number) {
+    return this.http.put<TeamMember>(this.memberUrl + member_id, member);
   }
 
   deleteTeam(team_id) {
-    console.log('TEAMID:', team_id);
-    console.log(this.teamUrl + '/');
     return this.http.delete<Team>(this.teamUrl + team_id);
   }
 

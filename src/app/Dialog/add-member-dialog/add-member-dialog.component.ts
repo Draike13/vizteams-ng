@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 import { TeamMember } from 'src/app/models/teamMember.model';
 import { DatabaseService } from 'src/app/services/database.service';
+import { InfoService } from 'src/app/services/info.service';
 
 @Component({
   selector: 'app-add-member-dialog',
@@ -31,7 +32,8 @@ export class AddMemberDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private http: HttpClient,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private infoService: InfoService
   ) {
     this.fnameControl = new FormControl();
     this.lnameControl = new FormControl();
@@ -73,6 +75,8 @@ export class AddMemberDialogComponent implements OnInit {
     };
     this.databaseService.newTeamMember(newMember).subscribe(() => {
       this.databaseService.updateMembers();
+      this.infoService.selectedMember$.next(undefined);
+      this.infoService.infoDisplay$.next(undefined);
     });
     console.log(newMember);
   }

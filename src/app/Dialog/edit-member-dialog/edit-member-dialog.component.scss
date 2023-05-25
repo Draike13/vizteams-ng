@@ -1,0 +1,66 @@
+mat-label {
+  font-size: large;
+}
+.input-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.select-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.first-name {
+  min-width: 15vw;
+  margin: 8px;
+}
+.last-name {
+  min-width: 15vw;
+  margin: 8px;
+}
+
+.title {
+  min-width: 15vw;
+  margin: 8px;
+}
+
+.team {
+  min-width: 15vw;
+  margin: 8px;
+}
+.button-holder {
+  display: flex;
+  justify-content: flex-end;
+}
+.cancel-button {
+  margin: 8;
+}
+.submit-button {
+  margin: 8;
+}
+.picsum-holder {
+  display: flex;
+  flex: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.picsum-image {
+  opacity: 0.5;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.picsum-selected {
+  opacity: 1;
+  border-bottom: 5px solid #ff4e00;
+}
+
+img {
+  border: 0px;
+  padding: 0px;
+  margin-bottom: 0px;
+}
