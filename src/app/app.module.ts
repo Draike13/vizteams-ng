@@ -28,7 +28,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AuthInterceptor } from './auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditTeamDialogComponent } from './Dialog/edit-team-dialog/edit-team-dialog.component';
+import { EditMemberDialogComponent } from './Dialog/edit-member-dialog/edit-member-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
     AddMemberDialogComponent,
     SignUpComponent,
     AddTeamDialogComponent,
+    EditTeamDialogComponent,
+    EditMemberDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,9 @@ import { SignUpComponent } from './Dialog/sign-up-in-dialog/sign-up.component';
     MatSelectModule,
     MatProgressBarModule,
     DragDropModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

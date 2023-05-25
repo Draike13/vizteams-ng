@@ -33,7 +33,6 @@ export class AuthService {
         },
       })
       .subscribe((res: any) => {
-        console.log('PAYLOAD', res);
         if (res.email != null) {
           this.userService.setCurrentUser(res.email);
         }

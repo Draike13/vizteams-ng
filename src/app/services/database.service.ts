@@ -9,9 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class DatabaseService {
   apiUrl = environment.apiUrl;
-  teamUrl = `${this.apiUrl}teams`;
+  teamUrl = `${this.apiUrl}teams/`;
+  memberUrl = `${this.apiUrl}team_members/`;
   teamList$: Subject<Team[]> = new Subject();
-  infoPanel$: Subject<Team> = new Subject();
 
   constructor(private http: HttpClient) {}
 
@@ -21,8 +21,27 @@ export class DatabaseService {
     });
   }
 
-  getMembers(id: number) {
-    return this.http.get<TeamMember[]>(`${this.teamUrl}/${id}/team_members`);
+  updateMembers() {
+    return this.http.get<Team[]>(this.teamUrl).subscribe((teamList) => {
+      this.teamList$.next(teamList);
+    });
+  }
+
+  updateDNDMember(data, newID) {
+    // Make an HTTP request to update the TeamMember table
+    for (let member of data) {
+      member.team_id = newID;
+      this.http
+        .put<TeamMember[]>(this.memberUrl + member.id, member)
+        .subscribe({
+          next: (updatedTeamMember) => {
+            console.log('TeamMember updated successfully.', updatedTeamMember);
+          },
+          error: (error) => {
+            console.error('Failed to update TeamMember.', error);
+          },
+        });
+    }
   }
 
   getTeamsList() {
@@ -30,6 +49,24 @@ export class DatabaseService {
   }
 
   createTeam(newTeam: any) {
-    return this.http.post<Team[]>(this.teamUrl, newTeam);
+    return this.http.post<Team>(this.teamUrl, newTeam);
+  }
+  editTeam(team: any, team_id: number) {
+    return this.http.put<Team>(this.teamUrl + team_id, team);
+  }
+  editMember(member: TeamMember, member_id: number) {
+    return this.http.put<TeamMember>(this.memberUrl + member_id, member);
+  }
+
+  deleteTeam(team_id) {
+    return this.http.delete<Team>(this.teamUrl + team_id);
+  }
+
+  deleteMember(member) {
+    return this.http.delete<TeamMember>(this.memberUrl + member.id);
+  }
+
+  newTeamMember(newTeamMember) {
+    return this.http.post<TeamMember>(this.memberUrl, newTeamMember);
   }
 }

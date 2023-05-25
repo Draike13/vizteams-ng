@@ -41,9 +41,9 @@
 
     <mat-form-field class="team">
       <mat-label>Team</mat-label>
-      <mat-select [value]="this.data.selectedTeam.id">
-        <mat-option *ngFor="let team of data.teamsList" [value]="team.id">
-          {{ team.name }}</mat-option
+      <mat-select [formControl]="teamControl">
+        <mat-option [value]="this.data[0].team_id">
+          {{ this.data[1].name }}</mat-option
         >
       </mat-select>
     </mat-form-field>
@@ -54,7 +54,7 @@
     </button>
     <button
       [matDialogClose]="true"
-      (click)="addMember()"
+      (click)="editMember()"
       class="submit-button"
       mat-button
     >

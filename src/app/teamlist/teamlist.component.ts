@@ -11,6 +11,9 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import Swal from 'sweetalert2';
+import { InfoService } from '../services/info.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-teamlist',
@@ -24,16 +27,29 @@ export class TeamlistComponent implements OnInit {
   progressValue: number = 0;
   isLoading: boolean = false;
   currentUser: any;
+  connectedTo = [];
 
   constructor(
     private databaseService: DatabaseService,
+    private infoService: InfoService,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) {}
+
+  populateConnectedTo() {
+    this.connectedTo = [];
+    this.databaseService.teamList$.subscribe((value) => {
+      this.teamsList = value;
+      for (let team of this.teamsList) {
+        this.connectedTo.push(team.name);
+      }
+    });
+    console.log('connectedTo: ', this.connectedTo);
+  }
 
   togglePanel() {
     this.toggle = !this.toggle;
-    console.log(this.toggle);
   }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
@@ -43,15 +59,22 @@ export class TeamlistComponent implements OnInit {
       data: { teamsList, selectedTeam },
     });
   }
+
   addTeam() {
     this.dialog.open(AddTeamDialogComponent, {
       minHeight: '30vh',
       minWidth: '40vw',
     });
+    this.populateConnectedTo();
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(undefined);
   }
+
   displayTeam(team: Team) {
-    this.databaseService.infoPanel$.next(team);
+    this.infoService.selectedMember$.next(undefined);
+    this.infoService.infoDisplay$.next(team);
     this.teamMembers = team.team_members;
+    console.log('CT', this.connectedTo);
   }
 
   ngOnInit(): void {
@@ -79,11 +102,30 @@ export class TeamlistComponent implements OnInit {
         this.teamsList = value;
       });
       this.databaseService.updateTeams();
+      this.populateConnectedTo();
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    console.log('EVENT: ', event);
-    moveItemInArray(this.teamMembers, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<any>, newID: number) {
+    console.log('EVENT', event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      const teamMemberdata = event.container.data;
+      this.databaseService.updateDNDMember(teamMemberdata, newID);
+    } else {
+      console.log('EVENT', event);
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      const teamMemberdata = event.container.data;
+      this.databaseService.updateDNDMember(teamMemberdata, newID);
+    }
   }
 }

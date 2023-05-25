@@ -1,23 +1,13 @@
 <p>
   <mat-form-field>
     <mat-label>team name:</mat-label>
-    <input
-      matInput
-      [formControl]="nameControl"
-      required
-      placeholder="Team Name"
-    />
+    <input matInput [formControl]="nameControl" required />
   </mat-form-field>
 </p>
 <p>
   <mat-form-field>
     <mat-label>Team Description:</mat-label>
-    <textarea
-      matInput
-      [formControl]="descControl"
-      required
-      placeholder="Please describe the team"
-    ></textarea>
+    <textarea matInput [formControl]="descControl" required></textarea>
   </mat-form-field>
 </p>
 <div class="modal-buttons">
@@ -26,7 +16,7 @@
   </button>
   <button
     mat-button
-    (click)="createTeam()"
+    (click)="editTeam()"
     [mat-dialog-close]="true"
     class="submitbutton"
     type="submit"
