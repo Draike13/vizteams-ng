@@ -43,7 +43,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     InfoContainerComponent,
     SignInFormComponent,
     AddMemberDialogComponent,
-    SignUpComponent,
     AddTeamDialogComponent,
     EditTeamDialogComponent,
     EditMemberDialogComponent,
