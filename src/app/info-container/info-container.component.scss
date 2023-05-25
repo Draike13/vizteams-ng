@@ -1,6 +1,13 @@
 .team-title {
   font-size: xx-large;
-  padding: 16px;
+  padding-top: 8px;
+  padding-right: 8px;
+  cursor: pointer;
+}
+.member-title {
+  font-size: xx-large;
+  padding-top: 8px;
+  padding-right: 8px;
 }
 
 .empty-card-text {
@@ -9,17 +16,16 @@
   font-weight: 500;
 }
 .info-card {
-  min-height: 70%;
-  margin-left: 50px;
-  margin-top: 50px;
-  margin-right: 50px;
+  height: 70%; /* Set a fixed height for the card */
+  margin: 3rem 3rem 0rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .default-display {
   display: flex;
   min-height: 70%;
-  margin-left: 50px;
-  margin-top: 50px;
-  margin-right: 50px;
+  margin: 3rem 3rem 0px 3rem;
   align-items: center;
   justify-content: center;
 }
@@ -27,37 +33,49 @@
   color: rgb(161, 154, 154);
 }
 
-.imgPath {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
 .avatar {
   height: 12vh;
   width: 6vw;
-  padding: 8px;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.member-image {
+  height: 18vh;
+  width: 9vw;
+  padding: 0.5rem;
 }
 
 .content-holder {
   display: flex;
   width: 45%;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
+}
+.content-holder-selected {
+  display: flex;
 }
 .text-holder {
-  padding-bottom: 16px;
+  padding-bottom: 1rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  font-size: x-large;
+}
+.text-holder-selected {
+  padding-bottom: 1rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   font-size: x-large;
 }
 
 .mat-card-content {
+  margin-bottom: 0rem;
+  height: 100%;
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: auto;
 }
 .name {
   padding-bottom: 4px;
@@ -65,4 +83,29 @@
 
 .title {
   padding-top: 4px;
+}
+
+.archive-button {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  font-size: xx-large;
+}
+.edit-button {
+  margin-right: 2rem;
+  padding-right: 4rem;
+  cursor: pointer;
+  font-size: xx-large;
+}
+
+.info-action-row {
+  margin: 0rem -1rem;
+  border-top: solid 1px grey;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.breadcrumb-holder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

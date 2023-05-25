@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { TeamMember } from '../models/teamMember.model';
 import { Team } from '../models/team.model';
+import Swal from 'sweetalert2';
+import { InfoService } from '../services/info.service';
+import { MatDialog } from '@angular/material/dialog';
+
+import { EditTeamDialogComponent } from '../Dialog/edit-team-dialog/edit-team-dialog.component';
 
 @Component({
   selector: 'app-info-container',
@@ -10,11 +15,73 @@ import { Team } from '../models/team.model';
 })
 export class InfoContainerComponent implements OnInit {
   infoDisplay?: Team;
-  constructor(private databaseService: DatabaseService) {}
-
-  ngOnInit(): void {
-    this.databaseService.infoPanel$.subscribe((res) => {
+  selectedMember?: TeamMember;
+  constructor(
+    private databaseService: DatabaseService,
+    private infoService: InfoService,
+    public dialog:MatDialog
+  ) {
+    this.infoService.infoDisplay$.subscribe((res) => {
       this.infoDisplay = res;
     });
+    this.infoService.selectedMember$.subscribe((res) => {
+      this.selectedMember = res;
+    });
+  }
+
+  ngOnInit(): void {
+    this.infoService.infoDisplay$.subscribe((res) => {
+      this.infoDisplay = res;
+    });
+  }
+
+  deleteTeam(team_id) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure you want to remove this Team?',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonColor: 'red',
+    }).then((result) => {
+      console.log('TEAM TO DELTE', team_id);
+      if (result.isConfirmed === true) {
+        this.databaseService.deleteTeam(team_id).subscribe(() => {
+          this.databaseService.updateTeams();
+        });
+      }
+      this.infoService.infoDisplay$.next(undefined);
+    });
+  }
+
+  deleteMember(member) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure you want to remove this Team?',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonColor: 'red',
+    }).then((result) => {
+      console.log('MEMBER TO DELTE');
+      if (result.isConfirmed === true) {
+        this.databaseService.deleteMember(member).subscribe(() => {
+          this.databaseService.updateTeams();
+        });
+      }
+      this.infoService.infoDisplay$.next(undefined);
+    });
+  }
+
+  clickedMember(member) {
+    this.infoService.selectedMember$.next(member);
+  }
+  clickedTeam() {
+    this.infoService.selectedMember$.next(undefined);
+  }
+  editTeam(team) {
+    this.dialog.open(EditTeamDialogComponent, {
+    data: team,
+    minHeight: '30vh',
+    minWidth: '40vw',
+  });;
   }
 }
