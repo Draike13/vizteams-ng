@@ -24,7 +24,7 @@
           [expanded]="toggle"
           *ngFor="let team of teamsList"
           class="team-expansion-panel"
-          #panel 
+          #panel
           (mouseenter)="panel.open()"
           (mouseleave)="panel.close()"
         >
@@ -45,7 +45,9 @@
           >
             <div
               class="image"
-              *ngFor="let teamMember of team.team_members"
+              *ngFor="
+                let teamMember of team.team_members | sort : 'display_order'
+              "
               cdkDrag
             >
               <img

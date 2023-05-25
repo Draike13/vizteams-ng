@@ -137,7 +137,7 @@ export class TeamlistComponent implements OnInit {
         event.currentIndex
       );
       const teamMemberdata = event.container.data;
-      this.databaseService.updateDNDMemberDisplayOrder(teamMemberdata);
+      this.databaseService.updateDNDMember(teamMemberdata, newID);
     } else {
       console.log('EVENT', event);
       transferArrayItem(

@@ -29,26 +29,9 @@ export class DatabaseService {
 
   updateDNDMember(data, newID) {
     // Make an HTTP request to update the TeamMember table
-    for (let member of data) {
-      member.team_id = newID;
-      this.http
-        .put<TeamMember[]>(this.memberUrl + member.id, member)
-        .subscribe({
-          next: (updatedTeamMember) => {
-            console.log('TeamMember updated successfully.', updatedTeamMember);
-          },
-          error: (error) => {
-            console.error('Failed to update TeamMember.', error);
-          },
-        });
-    }
-    this.updateDNDMemberDisplayOrder(data);
-  }
-
-  updateDNDMemberDisplayOrder(data) {
-    // Make an HTTP request to update the TeamMember table
+    //for (let member of data) {
     data.forEach((member, index) => {
-      console.log(index);
+      member.team_id = newID;
       member.display_order = index + 1;
       this.http
         .put<TeamMember[]>(this.memberUrl + member.id, member)
