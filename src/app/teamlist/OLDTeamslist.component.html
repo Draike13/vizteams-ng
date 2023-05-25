@@ -33,9 +33,6 @@
           <div
             class="imgPath"
             cdkDropList
-            id="{{ team.name }}"
-            [cdkDropListData]="team.team_members"
-            [cdkDropListConnectedTo]="connectedTo"
             cdkDropListOrientation="horizontal"
             (cdkDropListDropped)="drop($event)"
           >
@@ -62,7 +59,6 @@
                 />
               </ng-template>
             </div>
-            <br />
           </div>
           <p style="text-align: center" *ngIf="team.team_members?.length < 1">
             No members on this team.

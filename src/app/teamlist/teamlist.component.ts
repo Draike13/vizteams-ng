@@ -32,6 +32,17 @@ export class TeamlistComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  populateConnectedTo() {
+    this.connectedTo = [];
+    this.databaseService.teamList$.subscribe((value) => {
+      this.teamsList = value;
+      for (let team of this.teamsList) {
+        this.connectedTo.push(team.name);
+      }
+    });
+    console.log('connectedTo: ', this.connectedTo);
+  }
+
   togglePanel() {
     this.toggle = !this.toggle;
     console.log(this.toggle);
@@ -49,10 +60,12 @@ export class TeamlistComponent implements OnInit {
       minHeight: '30vh',
       minWidth: '40vw',
     });
+    this.populateConnectedTo();
   }
   displayTeam(team: Team) {
     this.databaseService.infoPanel$.next(team);
     this.teamMembers = team.team_members;
+    console.log('CT', this.connectedTo);
   }
 
   ngOnInit(): void {
@@ -80,11 +93,26 @@ export class TeamlistComponent implements OnInit {
         this.teamsList = value;
       });
       this.databaseService.updateTeams();
+      this.populateConnectedTo();
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    console.log('EVENT: ', event);
-    moveItemInArray(this.teamMembers, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<any>) {
+    console.log('EVENT', event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      console.log('EVENT', event);
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }
