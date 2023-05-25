@@ -115,7 +115,6 @@ export class TeamlistComponent implements OnInit {
         event.currentIndex
       );
       const teamMemberdata = event.container.data;
-      console.log('TD', teamMemberdata);
       this.databaseService.updateDNDMember(teamMemberdata, newID);
     } else {
       console.log('EVENT', event);
@@ -126,7 +125,6 @@ export class TeamlistComponent implements OnInit {
         event.currentIndex
       );
       const teamMemberdata = event.container.data;
-      console.log('TD', teamMemberdata);
       this.databaseService.updateDNDMember(teamMemberdata, newID);
     }
   }
