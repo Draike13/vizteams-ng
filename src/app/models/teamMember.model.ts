@@ -4,4 +4,5 @@ export interface TeamMember {
   team_id: number;
   title: string;
   img_url?: string;
+  display_order?: number;
 }

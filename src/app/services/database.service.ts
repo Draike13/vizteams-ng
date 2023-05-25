@@ -29,8 +29,10 @@ export class DatabaseService {
 
   updateDNDMember(data, newID) {
     // Make an HTTP request to update the TeamMember table
-    for (let member of data) {
+    //for (let member of data) {
+    data.forEach((member, index) => {
       member.team_id = newID;
+      member.display_order = index + 1;
       this.http
         .put<TeamMember[]>(this.memberUrl + member.id, member)
         .subscribe({
@@ -41,7 +43,7 @@ export class DatabaseService {
             console.error('Failed to update TeamMember.', error);
           },
         });
-    }
+    });
   }
 
   getTeamsList() {
