@@ -1,4 +1,4 @@
-<mat-card class="team-card">
+<mat-card class="team-card" cdk-scrollable>
   <mat-card-header>
     <mat-card-title
       matTooltip="Open/Close All"
@@ -23,6 +23,8 @@
           *ngFor="let team of teamsList"
           (click)="displayTeam(team)"
           [expanded]="toggle"
+          (mouseenter)="onMouseEnter(panel)"
+          (mouseleave)="onMouseLeave(panel)"
           class="team-expansion-panel"
           #panel
         >
@@ -47,6 +49,8 @@
                 let teamMember of team.team_members | sort : 'display_order'
               "
               cdkDrag
+              (cdkDragStarted)="onDragStarted()"
+              (cdkDragEnded)="onDragEnded()"
             >
               <img
                 *ngIf="teamMember.img_url; else useAvatar"
@@ -72,7 +76,9 @@
             No members on this team.
           </p>
           <mat-action-row class="icon-holder">
-            <p *ngIf="errorToggle" class="error-message">Team should have no more than 12 members</p>
+            <p *ngIf="errorToggle" class="error-message">
+              Team should have no more than 12 members
+            </p>
             <div class="counter">{{ team.team_members?.length ?? 0 }}/12</div>
 
             <mat-icon
