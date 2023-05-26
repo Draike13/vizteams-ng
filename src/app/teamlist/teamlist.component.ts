@@ -141,23 +141,29 @@ export class TeamlistComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any>, newID: number) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-      const teamMemberdata = event.container.data;
-      this.databaseService.updateDNDMember(teamMemberdata, newID);
+    console.log('EVENT', event);
+    const newLength = event.container.data.length;
+    if (newLength < 12) {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+        const teamMemberdata = event.container.data;
+        this.databaseService.updateDNDMember(teamMemberdata, newID);
+      } else {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+        const teamMemberdata = event.container.data;
+        this.databaseService.updateDNDMember(teamMemberdata, newID);
+      }
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-      const teamMemberdata = event.container.data;
-      this.databaseService.updateDNDMember(teamMemberdata, newID);
+      console.log('ERROR--TOO MANY MEMBERS');
     }
   }
 }
