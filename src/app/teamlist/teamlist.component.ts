@@ -141,7 +141,6 @@ export class TeamlistComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any>, newID: number) {
-    console.log('EVENT', event);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -151,7 +150,6 @@ export class TeamlistComponent implements OnInit {
       const teamMemberdata = event.container.data;
       this.databaseService.updateDNDMember(teamMemberdata, newID);
     } else {
-      console.log('EVENT', event);
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
