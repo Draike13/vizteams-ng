@@ -31,6 +31,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   styleUrls: ['./teamlist.component.scss'],
 })
 export class TeamlistComponent implements OnInit {
+  errorToggle: boolean = false;
   toggle: boolean = false;
   teamMembers: TeamMember[] = [];
   teamsList: Team[] = [];
@@ -88,11 +89,22 @@ export class TeamlistComponent implements OnInit {
   }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
-    this.dialog.open(AddMemberDialogComponent, {
-      minHeight: '20vh',
-      minWidth: '30vw',
-      data: { teamsList, selectedTeam },
-    });
+    if (selectedTeam.team_members.length > 11) {
+      this.memberErrorMessage();
+    } else {
+      this.dialog.open(AddMemberDialogComponent, {
+        minHeight: '20vh',
+        minWidth: '30vw',
+        data: { teamsList, selectedTeam },
+      });
+    }
+  }
+
+  memberErrorMessage() {
+    this.errorToggle = true;
+    setTimeout(() => {
+      this.errorToggle = false;
+    }, 3000);
   }
 
   addTeam() {
