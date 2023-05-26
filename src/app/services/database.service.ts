@@ -37,10 +37,10 @@ export class DatabaseService {
         .put<TeamMember[]>(this.memberUrl + member.id, member)
         .subscribe({
           next: (updatedTeamMember) => {
-            console.log('TeamMember updated successfully.', updatedTeamMember);
+            //console.log('TeamMember updated successfully.', updatedTeamMember);
           },
           error: (error) => {
-            console.error('Failed to update TeamMember.', error);
+            //console.error('Failed to update TeamMember.', error);
           },
         });
     });
