@@ -20,9 +20,9 @@
     <mat-card-content class="team-content">
       <mat-accordion class="team-accordion" multi>
         <mat-expansion-panel
+          *ngFor="let team of teamsList"
           (click)="displayTeam(team)"
           [expanded]="toggle"
-          *ngFor="let team of teamsList"
           class="team-expansion-panel"
           #panel
         >
@@ -72,6 +72,7 @@
             No members on this team.
           </p>
           <mat-action-row class="icon-holder">
+            <p *ngIf="errorToggle" class="error-message">Team should have no more than 12 members</p>
             <div class="counter">{{ team.team_members?.length ?? 0 }}/12</div>
 
             <mat-icon
