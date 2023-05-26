@@ -89,7 +89,7 @@ export class TeamlistComponent implements OnInit {
   }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
-    if (selectedTeam.team_members.length > 11) {
+    if (selectedTeam.team_members.length > 12) {
       this.memberErrorMessage();
     } else {
       this.dialog.open(AddMemberDialogComponent, {
