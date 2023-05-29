@@ -4,7 +4,8 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
-} from '@angular/core';
+} from  '@angular/core';
+
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
 import { AddTeamDialogComponent } from '../Dialog/add-team-dialog/add-team-dialog.component';
@@ -23,7 +24,7 @@ import { CdkDragEnter } from '@angular/cdk/drag-drop';
 
 import { InfoService } from '../services/info.service';
 import { HttpClient } from '@angular/common/http';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from  '@angular/core';
 
 @Component({
   selector: 'app-teamlist',
@@ -175,6 +176,7 @@ export class TeamlistComponent implements OnInit {
         this.databaseService.updateDNDMember(teamMemberdata, newID);
       }
     } else {
+
       console.log('ERROR--TOO MANY MEMBERS');
     }
   }
