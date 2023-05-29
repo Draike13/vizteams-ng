@@ -176,7 +176,7 @@ export class TeamlistComponent implements OnInit {
         this.databaseService.updateDNDMember(teamMemberdata, newID);
       }
     } else {
-
+      this.memberErrorMessage()                            
       console.log('ERROR--TOO MANY MEMBERS');
     }
   }
