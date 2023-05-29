@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from  '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { TeamMember } from '../models/teamMember.model';
 import { Team } from '../models/team.model';
-import Swal from 'sweetalert2';
+import  Swal  from 'sweetalert2';
 import { InfoService } from '../services/info.service';
 import { MatDialog } from '@angular/material/dialog';
 
