@@ -4,7 +4,7 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
-} from  '@angular/core';
+} from '@angular/core';
 
 import { TeamMember } from '../models/teamMember.model';
 import { AddMemberDialogComponent } from '../Dialog/add-member-dialog/add-member-dialog.component';
@@ -24,7 +24,7 @@ import { CdkDragEnter } from '@angular/cdk/drag-drop';
 
 import { InfoService } from '../services/info.service';
 import { HttpClient } from '@angular/common/http';
-import { Pipe, PipeTransform } from  '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-teamlist',
@@ -90,7 +90,7 @@ export class TeamlistComponent implements OnInit {
   }
 
   addMember(teamsList: Team[], selectedTeam: Team) {
-    if (selectedTeam.team_members.length > 12) {
+    if (selectedTeam.team_members.length == 12) {
       this.memberErrorMessage();
     } else {
       this.dialog.open(AddMemberDialogComponent, {
@@ -176,7 +176,7 @@ export class TeamlistComponent implements OnInit {
         this.databaseService.updateDNDMember(teamMemberdata, newID);
       }
     } else {
-      this.memberErrorMessage()                            
+      this.memberErrorMessage();
       console.log('ERROR--TOO MANY MEMBERS');
     }
   }
