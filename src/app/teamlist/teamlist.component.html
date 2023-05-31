@@ -76,7 +76,13 @@
             No members on this team.
           </p>
           <mat-action-row class="icon-holder">
-            <p *ngIf="errorToggle" class="error-message">
+            <p
+              *ngIf="errorToggle"
+              [ngClass]="
+                team === selectedTeam ? 'visible-message' : 'error-message'
+              "
+              class="error-message"
+            >
               Team should have no more than 12 members
             </p>
             <div class="counter">{{ team.team_members?.length ?? 0 }}/12</div>

@@ -202,6 +202,9 @@ mat-drawer-content {
 }
 
 .error-message {
-  color: crimson;
+  color: transparent;
   margin: 0.5rem 1rem 0 0;
+}
+.visible-message {
+  color: crimson;
 }

@@ -41,6 +41,7 @@ export class TeamlistComponent implements OnInit {
   currentUser: any;
   connectedTo = [];
   isDragging: boolean = false;
+  selectedTeam = null;
   @ViewChild('panel') panel: MatExpansionPanel;
   timeoutID;
 
@@ -91,6 +92,7 @@ export class TeamlistComponent implements OnInit {
 
   addMember(teamsList: Team[], selectedTeam: Team) {
     if (selectedTeam.team_members.length == 12) {
+      this.selectedTeam = selectedTeam;
       this.memberErrorMessage();
     } else {
       this.dialog.open(AddMemberDialogComponent, {
