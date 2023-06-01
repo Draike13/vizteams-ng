@@ -179,9 +179,7 @@ export class TeamlistComponent implements OnInit {
       }
     } else {
       this.selectedTeam = selectedTeam;
-      console.log('ST', this.selectedTeam);
       this.memberErrorMessage();
-      console.log('ERROR--TOO MANY MEMBERS');
     }
   }
 }
