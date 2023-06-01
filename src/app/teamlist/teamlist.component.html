@@ -41,7 +41,7 @@
             [cdkDropListData]="team.team_members"
             [cdkDropListConnectedTo]="connectedTo"
             cdkDropListOrientation="horizontal"
-            (cdkDropListDropped)="drop($event, team.id)"
+            (cdkDropListDropped)="drop($event, team.id, team)"
           >
             <div
               class="image"

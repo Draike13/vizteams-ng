@@ -155,7 +155,7 @@ export class TeamlistComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<any>, newID: number) {
+  drop(event: CdkDragDrop<any>, newID: number, selectedTeam: Team) {
     console.log('EVENT', event);
     const newLength = event.container.data.length;
     if (newLength < 12) {
@@ -178,6 +178,8 @@ export class TeamlistComponent implements OnInit {
         this.databaseService.updateDNDMember(teamMemberdata, newID);
       }
     } else {
+      this.selectedTeam = selectedTeam;
+      console.log('ST', this.selectedTeam);
       this.memberErrorMessage();
       console.log('ERROR--TOO MANY MEMBERS');
     }
