@@ -158,16 +158,16 @@ export class TeamlistComponent implements OnInit {
   drop(event: CdkDragDrop<any>, newID: number, selectedTeam: Team) {
     console.log('EVENT', event);
     const newLength = event.container.data.length;
-    if (newLength < 12) {
-      if (event.previousContainer === event.container) {
-        moveItemInArray(
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex
-        );
-        const teamMemberdata = event.container.data;
-        this.databaseService.updateDNDMember(teamMemberdata, newID);
-      } else {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      const teamMemberdata = event.container.data;
+      this.databaseService.updateDNDMember(teamMemberdata, newID);
+    } else {
+      if (newLength < 12) {
         transferArrayItem(
           event.previousContainer.data,
           event.container.data,
@@ -176,10 +176,10 @@ export class TeamlistComponent implements OnInit {
         );
         const teamMemberdata = event.container.data;
         this.databaseService.updateDNDMember(teamMemberdata, newID);
+      } else {
+        this.selectedTeam = selectedTeam;
+        this.memberErrorMessage();
       }
-    } else {
-      this.selectedTeam = selectedTeam;
-      this.memberErrorMessage();
     }
   }
 }
